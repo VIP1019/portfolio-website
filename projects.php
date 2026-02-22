@@ -482,9 +482,10 @@
                 <li><a href="contact.php">Contact</a></li>
             </ul>
             <div class="nav-social">
-                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/prnc_j1" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/ecel.tugade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://github.com/VIP1019" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </nav>
@@ -664,9 +665,10 @@
         <div class="footer-content">
             <p>&copy; 2026 Prince Jheck T. Juan. All rights reserved.</p>
             <div class="footer-social">
-                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/prnc_j1" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/ecel.tugade" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://github.com/VIP1019" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
