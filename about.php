@@ -204,7 +204,163 @@
                     </div>
                 </div>
 
-Tool call argument 'replace' pruned from message history.
+                <!-- Achievements & Credentials Section -->
+                <div class="achievements-section">
+                    <h2 class="section-heading">
+                        <i class="fas fa-trophy"></i>
+                        Achievements & Credentials
+                    </h2>
+                    <div class="achievement-cards">
+                        <!-- Academic Honors -->
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Graduated with High Honors</h4>
+                                <p>Senior High School - Recognized for outstanding academic performance</p>
+                                <div class="achievement-badge">Academic Excellence</div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Consistent Honor Student</h4>
+                                <p>Junior High School - Maintained high academic standing throughout</p>
+                                <div class="achievement-badge">Honor Roll</div>
+                            </div>
+                        </div>
+
+                        <!-- Research & Innovation Awards -->
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Best in Research Awardee</h4>
+                                <p>Recognized for outstanding research work and academic contributions</p>
+                                <div class="achievement-badge">Research Excellence</div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Best in Innovation Awardee</h4>
+                                <p>Awarded for creative and innovative solutions in technology</p>
+                                <div class="achievement-badge">Innovation Award</div>
+                            </div>
+                        </div>
+
+                        <!-- National Competition -->
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>National Finalist</h4>
+                                <p>Development Academy of the Philippines - Competed at national level</p>
+                                <div class="achievement-badge">National Competition</div>
+                            </div>
+                        </div>
+
+                        <!-- Leadership Positions -->
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>SG Vice President</h4>
+                                <p>Student Government Vice President for Planning and Development</p>
+                                <div class="achievement-badge">Leadership</div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Math Club Vice President</h4>
+                                <p>Former Vice President of the Math Club</p>
+                                <div class="achievement-badge">Leadership</div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Public Information Officer</h4>
+                                <p>Served as PIO of YES-O (Youth for Environment in Schools Organization)</p>
+                                <div class="achievement-badge">Service</div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>Filipino Club Auditor</h4>
+                                <p>Served as Auditor of the Filipino Club</p>
+                                <div class="achievement-badge">Organization</div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>SSG Representative</h4>
+                                <p>Former Supreme Student Government Representative</p>
+                                <div class="achievement-badge">Representation</div>
+                            </div>
+                        </div>
+
+                        <!-- Program Participation -->
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>DSTF Participant</h4>
+                                <p>Department of Science and Technology Foundation Participant (2018)</p>
+                                <div class="achievement-badge">STEM Program</div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>DOST I Make, We Make</h4>
+                                <p>Department of Science and Technology innovation program participant</p>
+                                <div class="achievement-badge">Innovation Program</div>
+                            </div>
+                        </div>
+
+                        <!-- Seminars -->
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h4>CCS Technology Seminar</h4>
+                                <p>Attended CCS Seminar on Technology and Student Development</p>
+                                <div class="achievement-badge">Professional Development</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Career Goals with Enhanced Cards -->
                 <div class="career-goals-section">
