@@ -204,55 +204,7 @@
                     </div>
                 </div>
 
-                <!-- Achievements Section with Cards -->
-                <div class="achievements-section">
-                    <h2 class="section-heading">
-                        <i class="fas fa-trophy"></i>
-                        Achievements & Recognition
-                    </h2>
-                    <div class="achievement-cards">
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <h4>Top 5 IT School Programming Contest</h4>
-                                <p>2025 - Recognized for exceptional programming skills and problem-solving abilities</p>
-                                <div class="achievement-badge">Excellence Award</div>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <h4>Full-Stack Web Development Certification</h4>
-                                <p>2025 - Completed comprehensive online certification in modern web development</p>
-                                <div class="achievement-badge">Certified</div>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <h4>Student Government Development Officer</h4>
-                                <p>2025 - Recognized for organizing major school tech events and hackathons</p>
-                                <div class="achievement-badge">Leadership</div>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <h4>Multiple Functional Systems Developer</h4>
-                                <p>Developed Library Management and Digital Queue Systems for school use</p>
-                                <div class="achievement-badge">Developer</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+Tool call argument 'replace' pruned from message history.
 
                 <!-- Career Goals with Enhanced Cards -->
                 <div class="career-goals-section">
