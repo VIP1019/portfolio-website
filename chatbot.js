@@ -385,6 +385,19 @@ class PortfolioChatbot {
         this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
     }
 
+    // Enhanced pattern matching with 1000+ variations
+    matchesAnyPattern(question, patterns) {
+        const lowerQuestion = question.toLowerCase();
+        return patterns.some(pattern => {
+            if (typeof pattern === 'string') {
+                return lowerQuestion.includes(pattern.toLowerCase());
+            } else if (pattern instanceof RegExp) {
+                return pattern.test(lowerQuestion);
+            }
+            return false;
+        });
+    }
+
     generateResponse(question) {
         const lowerQuestion = question.toLowerCase();
 
