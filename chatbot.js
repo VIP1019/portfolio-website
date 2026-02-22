@@ -6,7 +6,7 @@
 class PortfolioChatbot {
     constructor() {
         // OpenAI Integration Settings
-        this.useOpenAI = false; // Set to TRUE after adding your OpenAI API key
+        this.useOpenAI = true; // OpenAI is now ENABLED with your API key!
         this.openAIEndpoint = 'chatbot-openai.php';
         
         // Conversation history for better context

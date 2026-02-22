@@ -12,8 +12,9 @@ error.log
 *.tmp
 tmp_*
 
-# Sensitive configuration (if any)
-# config.php
+# Sensitive configuration - NEVER COMMIT THESE!
+openai-config.php
+config.php
 
 # IDE files
 .vscode/
