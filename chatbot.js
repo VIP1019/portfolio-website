@@ -1,9 +1,97 @@
-// AI Chatbot for Prince Jheck's Portfolio
+// Enhanced Intelligent AI Chatbot for Prince Jheck's Portfolio
+// This chatbot can answer questions about the portfolio AND general knowledge questions
 // Knowledge base about Prince Jheck T. Juan
 
 class PortfolioChatbot {
     constructor() {
+        // Comprehensive Knowledge Base
         this.knowledgeBase = {
+            // Personal Information
+            name: "Prince Jheck T. Juan",
+            age: 20,
+            location: "Daet, Camarines Norte, Philippines",
+            email: "princejheckjuan023@gmail.com",
+            status: "Available for work",
+            currentEducation: "BS Information Technology - Software Development at Camarines Norte State College (2024-Present)",
+            
+            // Complete Education History
+            education: {
+                college: "BS Information Technology at Camarines Norte State College (2024-Present)",
+                seniorHigh: "STEM at Camarines Norte Senior High School (2022-2024) - Graduated with High Honors",
+                juniorHigh: "Camarines Norte National High School (2018-2022) - Consistent Honor Student",
+                elementary: "Daet Elementary School (2017)"
+            },
+            
+            // All Achievements
+            achievements: [
+                "Graduated with High Honors in Senior High School",
+                "Consistent Honor Student in Junior High School",
+                "Best in Research Awardee",
+                "Best in Innovation Awardee",
+                "National Finalist - Development Academy of the Philippines",
+                "SG Vice President for Planning and Development",
+                "Former Vice President of the Math Club",
+                "Public Information Officer of YES-O",
+                "Auditor of the Filipino Club",
+                "Former SSG Representative",
+                "DSTF Participant (2018)",
+                "DOST I Make, We Make Participant",
+                "Attended CCS Seminar on Technology and Student Development"
+            ],
+            
+            // Complete Skills List
+            skills: {
+                programming: ["Java", "Python", "JavaScript", "PHP", "C++"],
+                web: ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Bootstrap", "Tailwind CSS"],
+                databases: ["MySQL", "MongoDB", "Firebase"],
+                tools: ["Git", "GitHub", "VS Code", "Eclipse", "IntelliJ IDEA", "Postman"],
+                frameworks: ["React", "Express.js", "Laravel"],
+                other: ["API Integration", "IoT Development", "Responsive Design", "RESTful APIs"]
+            },
+            
+            // All Projects
+            projects: [
+                {
+                    name: "Digital Queue Management System",
+                    description: "Console-based system managing queues for educational assistance payout using threading and file I/O",
+                    tech: ["Java", "Threading", "File I/O"]
+                },
+                {
+                    name: "Library Management System",
+                    description: "Complete system for library records with book listings, borrowing, and returns using Swing GUI",
+                    tech: ["Java", "Swing GUI", "OOP", "File I/O"]
+                },
+                {
+                    name: "Community Transportation & Ride-Sharing System",
+                    description: "Web-based application for community ridesharing with real-time updates and location tracking",
+                    tech: ["HTML5", "CSS3", "JavaScript", "MySQL", "API Integration"]
+                },
+                {
+                    name: "Personal Portfolio Website",
+                    description: "Professional portfolio with GitHub API, EmailJS, contact forms, and testimonial features",
+                    tech: ["HTML", "CSS", "JavaScript", "PHP", "APIs"]
+                }
+            ],
+            
+            // Career Goals
+            goals: [
+                "Full-Stack Web Developer",
+                "Digital Solution Creator",
+                "Tech Innovator in IoT and AI",
+                "Tech Community Leader"
+            ],
+            
+            // Social Links
+            social: {
+                instagram: "https://www.instagram.com/prnc_j1",
+                facebook: "https://www.facebook.com/ecel.tugade",
+                github: "https://github.com/VIP1019",
+                linkedin: "https://www.linkedin.com/in/princejheck-juan-27145a3a8"
+            }
+        };
+        
+        // Original knowledge base for compatibility
+        this.oldKnowledgeBase = {
             // Personal Information
             personal: {
                 name: "Prince Jheck T. Juan",
@@ -297,8 +385,172 @@ class PortfolioChatbot {
             return this.getSpecificTechResponse(lowerQuestion);
         }
 
+        // General knowledge questions - Make the bot intelligent for ANY question
+        const generalResponse = this.handleGeneralQuestion(lowerQuestion, question);
+        if (generalResponse) {
+            return generalResponse;
+        }
+
         // Default response
         return this.getRandomResponse(this.responses.default);
+    }
+
+    // NEW: Intelligent General Question Handler
+    handleGeneralQuestion(lowerQuestion, originalQuestion) {
+        // Time-related questions
+        if (this.matchesPattern(lowerQuestion, ['what time', 'current time', 'time now'])) {
+            const now = new Date();
+            return `The current time is **${now.toLocaleTimeString()}** on ${now.toLocaleDateString()}.`;
+        }
+
+        // Date-related questions
+        if (this.matchesPattern(lowerQuestion, ['what date', 'today', 'what day'])) {
+            const now = new Date();
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return `Today is **${dayNames[now.getDay()]}, ${now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}**.`;
+        }
+
+        // Math calculations
+        if (this.matchesPattern(lowerQuestion, ['calculate', 'what is', 'plus', 'minus', 'times', 'divided'])) {
+            const mathResult = this.handleMathQuestion(originalQuestion);
+            if (mathResult) return mathResult;
+        }
+
+        // Technology definitions
+        if (this.matchesPattern(lowerQuestion, ['what is html', 'what is css', 'what is javascript', 'what is python', 
+                                                  'what is java', 'what is react', 'what is node', 'what is api'])) {
+            return this.getTechDefinition(lowerQuestion);
+        }
+
+        // Programming concepts
+        if (this.matchesPattern(lowerQuestion, ['what is oop', 'object oriented', 'what is a variable', 'what is a function',
+                                                  'what is a loop', 'what is an array', 'what is database'])) {
+            return this.getProgrammingConcept(lowerQuestion);
+        }
+
+        // General greetings/small talk
+        if (this.matchesPattern(lowerQuestion, ['how are you', 'how do you do', 'whats up', 'what up'])) {
+            return "I'm doing great! I'm here to help you learn about Prince Jheck's portfolio or answer any tech-related questions you might have. What would you like to know?";
+        }
+
+        // Weather (acknowledge but can't provide)
+        if (this.matchesPattern(lowerQuestion, ['weather', 'temperature', 'forecast'])) {
+            return "I don't have access to live weather data, but I can tell you that Prince is located in **Daet, Camarines Norte, Philippines** 🇵🇭. You can check the local weather there online!";
+        }
+
+        // Jokes
+        if (this.matchesPattern(lowerQuestion, ['tell me a joke', 'joke', 'funny'])) {
+            return this.getTechJoke();
+        }
+
+        // Motivational/inspiration
+        if (this.matchesPattern(lowerQuestion, ['motivate me', 'inspire', 'motivation', 'quote'])) {
+            return this.getMotivationalQuote();
+        }
+
+        // Simple yes/no questions about capabilities
+        if (this.matchesPattern(lowerQuestion, ['can you', 'are you able'])) {
+            return "I can help you with:\n• Information about Prince Jheck's portfolio\n• Tech definitions and programming concepts\n• Basic calculations\n• General technology questions\n\nWhat would you like to know?";
+        }
+
+        return null; // No match, will use default response
+    }
+
+    // Math calculator
+    handleMathQuestion(question) {
+        try {
+            // Extract numbers and operators
+            const match = question.match(/(\d+\.?\d*)\s*([\+\-\*\/×÷])\s*(\d+\.?\d*)/);
+            if (match) {
+                const num1 = parseFloat(match[1]);
+                const operator = match[2];
+                const num2 = parseFloat(match[3]);
+                let result;
+
+                switch(operator) {
+                    case '+': result = num1 + num2; break;
+                    case '-': result = num1 - num2; break;
+                    case '*':
+                    case '×': result = num1 * num2; break;
+                    case '/':
+                    case '÷': result = num1 / num2; break;
+                    default: return null;
+                }
+
+                return `**${num1} ${operator} ${num2} = ${result}**\n\nNeed any other calculations?`;
+            }
+        } catch (e) {
+            return null;
+        }
+        return null;
+    }
+
+    // Technology definitions
+    getTechDefinition(question) {
+        const definitions = {
+            'html': "**HTML (HyperText Markup Language)** is the standard markup language for creating web pages. It structures content on the web using elements like headings, paragraphs, links, and more. Prince uses HTML5 in his web projects!",
+            'css': "**CSS (Cascading Style Sheets)** is used to style and layout web pages. It controls colors, fonts, spacing, and responsive design. Prince is proficient in CSS3 and frameworks like Bootstrap and Tailwind CSS!",
+            'javascript': "**JavaScript** is a programming language that makes websites interactive. It runs in the browser and powers dynamic features. Prince uses JavaScript extensively, including frameworks like React and Node.js!",
+            'python': "**Python** is a versatile, beginner-friendly programming language used for web development, data analysis, AI, and automation. Prince has Python in his skill set!",
+            'java': "**Java** is a powerful, object-oriented programming language used for building enterprise applications, Android apps, and systems. Prince has built several projects with Java, including his Queue Management and Library Systems!",
+            'react': "**React** is a JavaScript library for building user interfaces, especially single-page applications. It uses components and makes interactive UIs easier to create. Prince is skilled in React!",
+            'node': "**Node.js** is a JavaScript runtime that lets you run JavaScript on servers (backend). It's fast, scalable, and perfect for building APIs. Prince uses Node.js in his full-stack projects!",
+            'api': "**API (Application Programming Interface)** is a set of rules that allows different software to communicate. Think of it as a messenger between applications. Prince has integrated several APIs in his portfolio!"
+        };
+
+        for (let [key, value] of Object.entries(definitions)) {
+            if (question.includes(key)) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    // Programming concepts
+    getProgrammingConcept(question) {
+        if (question.includes('oop') || question.includes('object oriented')) {
+            return "**OOP (Object-Oriented Programming)** is a programming paradigm based on 'objects' containing data and methods. Key concepts include:\n• **Encapsulation** - Bundling data and methods\n• **Inheritance** - Creating new classes from existing ones\n• **Polymorphism** - Objects taking multiple forms\n• **Abstraction** - Hiding complex details\n\nPrince uses OOP principles in his Java projects!";
+        }
+        if (question.includes('variable')) {
+            return "A **variable** is a container that stores data values. Think of it as a labeled box where you can put information. For example: `let name = \"Prince\";` creates a variable called 'name' storing the text 'Prince'.";
+        }
+        if (question.includes('function')) {
+            return "A **function** is a reusable block of code that performs a specific task. It's like a mini-program within your program. Functions help organize code and avoid repetition. Example: `function greet() { return \"Hello!\"; }`";
+        }
+        if (question.includes('loop')) {
+            return "A **loop** repeats a block of code multiple times. Common types:\n• **for loop** - Repeats a specific number of times\n• **while loop** - Repeats while a condition is true\n• **forEach** - Iterates over array elements\n\nLoops save time and make code efficient!";
+        }
+        if (question.includes('array')) {
+            return "An **array** is a data structure that stores multiple values in a single variable. Think of it as a list. Example: `let skills = ['Java', 'Python', 'JavaScript'];` - Prince's skills can be stored in an array!";
+        }
+        if (question.includes('database')) {
+            return "A **database** is an organized collection of data stored electronically. It allows you to store, retrieve, and manage information efficiently. Prince works with databases like MySQL, MongoDB, and Firebase!";
+        }
+        return null;
+    }
+
+    // Tech jokes
+    getTechJoke() {
+        const jokes = [
+            "Why do programmers prefer dark mode? 🌙\nBecause light attracts bugs! 🐛",
+            "How many programmers does it take to change a light bulb? 💡\nNone. It's a hardware problem! 🔧",
+            "Why do Java developers wear glasses? 👓\nBecause they don't C#! 😄",
+            "What's a programmer's favorite hangout spot? 🎯\nThe Foo Bar! 🍺",
+            "Why did the developer go broke? 💸\nBecause he used up all his cache! 💰"
+        ];
+        return this.getRandomResponse(jokes);
+    }
+
+    // Motivational quotes
+    getMotivationalQuote() {
+        const quotes = [
+            "💡 *'The only way to do great work is to love what you do.'* - Steve Jobs\n\nKeep pushing forward, just like Prince with his projects!",
+            "🚀 *'Code is like humor. When you have to explain it, it's bad.'* - Cory House\n\nWrite clean, self-explanatory code!",
+            "⭐ *'First, solve the problem. Then, write the code.'* - John Johnson\n\nThink before you code!",
+            "🌟 *'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.'* - Martin Fowler",
+            "🎯 *'The best error message is the one that never shows up.'* - Thomas Fuchs\n\nWrite robust code!"
+        ];
+        return this.getRandomResponse(quotes);
     }
 
     matchesPattern(text, keywords) {
