@@ -1,9 +1,17 @@
 // Enhanced Intelligent AI Chatbot for Prince Jheck's Portfolio
-// This chatbot can answer questions about the portfolio AND general knowledge questions
+// This chatbot uses OpenAI GPT (when configured) with intelligent fallback system
+// Can answer questions about the portfolio AND general knowledge questions
 // Knowledge base about Prince Jheck T. Juan
 
 class PortfolioChatbot {
     constructor() {
+        // OpenAI Integration Settings
+        this.useOpenAI = true; // Set to false to use only fallback system
+        this.openAIEndpoint = 'chatbot-openai.php';
+        
+        // Conversation history for better context
+        this.conversationHistory = [];
+        
         // Comprehensive Knowledge Base
         this.knowledgeBase = {
             // Personal Information
@@ -257,23 +265,68 @@ class PortfolioChatbot {
         }
     }
 
-    sendMessage() {
+    async sendMessage() {
         const message = this.chatbotInput.value.trim();
         if (!message) return;
 
         // Add user message
         this.addMessage(message, 'user');
         this.chatbotInput.value = '';
+        
+        // Add to conversation history
+        this.conversationHistory.push({role: 'user', content: message});
 
         // Show typing indicator
         this.showTypingIndicator();
 
-        // Generate and show bot response
-        setTimeout(() => {
-            this.hideTypingIndicator();
-            const response = this.generateResponse(message);
-            this.addMessage(response, 'bot');
-        }, 1000 + Math.random() * 1000);
+        // Try OpenAI first, then fallback to rule-based system
+        if (this.useOpenAI) {
+            try {
+                const response = await this.getOpenAIResponse(message);
+                this.hideTypingIndicator();
+                this.addMessage(response, 'bot');
+                this.conversationHistory.push({role: 'assistant', content: response});
+            } catch (error) {
+                console.log('OpenAI failed, using fallback:', error);
+                // Fallback to rule-based system
+                setTimeout(() => {
+                    this.hideTypingIndicator();
+                    const response = this.generateResponse(message);
+                    this.addMessage(response, 'bot');
+                    this.conversationHistory.push({role: 'assistant', content: response});
+                }, 1000 + Math.random() * 1000);
+            }
+        } else {
+            // Use rule-based system only
+            setTimeout(() => {
+                this.hideTypingIndicator();
+                const response = this.generateResponse(message);
+                this.addMessage(response, 'bot');
+                this.conversationHistory.push({role: 'assistant', content: response});
+            }, 1000 + Math.random() * 1000);
+        }
+    }
+
+    // NEW: OpenAI API Integration
+    async getOpenAIResponse(message) {
+        const response = await fetch(this.openAIEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success && !data.fallback) {
+            return data.message;
+        } else {
+            // API not configured or error, use fallback
+            throw new Error(data.error || 'OpenAI not available');
+        }
     }
 
     addMessage(text, sender) {
@@ -335,54 +388,95 @@ class PortfolioChatbot {
     generateResponse(question) {
         const lowerQuestion = question.toLowerCase();
 
-        // Greeting detection
-        if (this.matchesPattern(lowerQuestion, ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon'])) {
+        // Enhanced Greeting detection with more variations
+        if (this.matchesPattern(lowerQuestion, ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 
+                                                  'good evening', 'sup', 'yo', 'hola', 'howdy', 'hiya'])) {
             return this.getRandomResponse(this.responses.greeting);
         }
 
-        // Farewell detection
-        if (this.matchesPattern(lowerQuestion, ['bye', 'goodbye', 'see you', 'thanks', 'thank you'])) {
+        // Enhanced Farewell detection
+        if (this.matchesPattern(lowerQuestion, ['bye', 'goodbye', 'see you', 'thanks', 'thank you', 'see ya', 
+                                                  'later', 'gotta go', 'talk later', 'peace', 'cya'])) {
             return this.getRandomResponse(this.responses.farewell);
         }
 
-        // Skills questions
-        if (this.matchesPattern(lowerQuestion, ['skill', 'technology', 'stack', 'expertise', 'proficient', 'know'])) {
+        // Name questions - Enhanced
+        if (this.matchesPattern(lowerQuestion, ['your name', 'who are you', 'what are you', 'introduce yourself', 
+                                                  'tell me about yourself'])) {
+            return `I'm Prince Jheck's AI assistant! 🤖 I know everything about his portfolio, skills, projects, and achievements. I can also help with tech questions and general knowledge. What would you like to know?`;
+        }
+
+        // Age questions
+        if (this.matchesPattern(lowerQuestion, ['how old', 'age', 'born', 'birthday'])) {
+            return `Prince Jheck is **20 years old** and currently studying BS Information Technology at Camarines Norte State College. He's a young, talented developer with impressive achievements! 🎓`;
+        }
+
+        // Location questions
+        if (this.matchesPattern(lowerQuestion, ['where', 'location', 'live', 'from', 'based', 'city'])) {
+            return `Prince is from **Daet, Camarines Norte, Philippines** 🇵🇭. He's currently studying at Camarines Norte State College in the same city.`;
+        }
+
+        // Enhanced Skills questions with more variations
+        if (this.matchesPattern(lowerQuestion, ['skill', 'technology', 'stack', 'expertise', 'proficient', 'know', 
+                                                  'programming language', 'can you code', 'languages', 'tech stack',
+                                                  'what does he know', 'abilities', 'capabilities'])) {
             return this.getSkillsResponse(lowerQuestion);
         }
 
-        // Background/Education questions
-        if (this.matchesPattern(lowerQuestion, ['background', 'education', 'study', 'school', 'university', 'college', 'who is', 'who are', 'about'])) {
+        // Enhanced Background/Education questions
+        if (this.matchesPattern(lowerQuestion, ['background', 'education', 'study', 'school', 'university', 'college', 
+                                                  'who is', 'who are', 'about', 'studied', 'degree', 'course',
+                                                  'graduated', 'student', 'academic'])) {
             return this.getBackgroundResponse();
         }
 
-        // Projects/Achievements questions
-        if (this.matchesPattern(lowerQuestion, ['project', 'achievement', 'work', 'built', 'created', 'developed', 'portfolio'])) {
+        // Enhanced Projects/Achievements questions
+        if (this.matchesPattern(lowerQuestion, ['project', 'achievement', 'work', 'built', 'created', 'developed', 
+                                                  'portfolio', 'award', 'accomplishment', 'success', 'made',
+                                                  'best work', 'experience', 'honor'])) {
             return this.getProjectsResponse();
         }
 
-        // Help/Services questions
-        if (this.matchesPattern(lowerQuestion, ['help', 'service', 'offer', 'do for', 'assist', 'collaborate', 'hire', 'work with'])) {
+        // Enhanced Help/Services questions
+        if (this.matchesPattern(lowerQuestion, ['help', 'service', 'offer', 'do for', 'assist', 'collaborate', 
+                                                  'hire', 'work with', 'freelance', 'available', 'looking for'])) {
             return this.getServicesResponse();
         }
 
-        // Contact questions
-        if (this.matchesPattern(lowerQuestion, ['contact', 'reach', 'email', 'message', 'connect', 'talk'])) {
+        // Enhanced Contact questions
+        if (this.matchesPattern(lowerQuestion, ['contact', 'reach', 'email', 'message', 'connect', 'talk', 
+                                                  'get in touch', 'communicate', 'social media', 'linkedin',
+                                                  'instagram', 'facebook', 'github'])) {
             return this.getContactResponse();
         }
 
-        // Goals/Future questions
-        if (this.matchesPattern(lowerQuestion, ['goal', 'future', 'plan', 'career', 'aspiration', 'want to'])) {
+        // Enhanced Goals/Future questions
+        if (this.matchesPattern(lowerQuestion, ['goal', 'future', 'plan', 'career', 'aspiration', 'want to', 
+                                                  'dream', 'aim', 'ambition', 'vision', 'next step'])) {
             return this.getGoalsResponse();
         }
 
-        // Interest questions
-        if (this.matchesPattern(lowerQuestion, ['interest', 'passion', 'like', 'enjoy', 'love', 'hobby'])) {
+        // Enhanced Interest questions
+        if (this.matchesPattern(lowerQuestion, ['interest', 'passion', 'like', 'enjoy', 'love', 'hobby', 
+                                                  'favorite', 'prefer', 'into'])) {
             return this.getInterestsResponse();
         }
 
-        // Specific technology questions
-        if (this.matchesPattern(lowerQuestion, ['java', 'javascript', 'python', 'react', 'node', 'database', 'mysql'])) {
+        // Enhanced Specific technology questions
+        if (this.matchesPattern(lowerQuestion, ['java', 'javascript', 'python', 'react', 'node', 'database', 
+                                                  'mysql', 'mongodb', 'php', 'html', 'css', 'bootstrap',
+                                                  'tailwind', 'git', 'github', 'firebase'])) {
             return this.getSpecificTechResponse(lowerQuestion);
+        }
+
+        // Experience questions
+        if (this.matchesPattern(lowerQuestion, ['experience', 'years', 'how long', 'beginner', 'expert'])) {
+            return `Prince is currently a **BS IT student** (2024-Present) with hands-on experience building real projects like:\n• Library Management Systems\n• Digital Queue Systems\n• Web Applications with APIs\n\nHe's been coding throughout his STEM education and continues to build impressive projects! 💻`;
+        }
+
+        // Why hire/choose questions
+        if (this.matchesPattern(lowerQuestion, ['why hire', 'why choose', 'why work', 'what makes', 'different'])) {
+            return `Here's why Prince stands out:\n\n✅ **Academic Excellence** - High Honors graduate\n✅ **Multiple Awards** - Best in Research & Innovation\n✅ **National Recognition** - DAP National Finalist\n✅ **Leadership Experience** - SG Vice President\n✅ **Hands-on Projects** - Real working systems\n✅ **Modern Tech Stack** - React, Node.js, APIs\n✅ **Passionate Learner** - Always exploring new tech\n\nHe brings both technical skills AND proven leadership! 🌟`;
         }
 
         // General knowledge questions - Make the bot intelligent for ANY question

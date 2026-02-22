@@ -307,6 +307,7 @@
         </div>
     </div>
 
+    <script src="chatbot-knowledge.js"></script>
     <script src="script.js"></script>
     <script src="chatbot.js"></script>
 </body>
