@@ -683,7 +683,7 @@ class PortfolioChatbot {
     getBackgroundResponse() {
         const kb = this.knowledgeBase;
         
-        return `**About Prince Jheck T. Juan:**\n\nPrince is a ${kb.personal.age}-year-old Information Technology student from ${kb.personal.location}. He's currently pursuing a Bachelor of Science in IT with specialization in **Software Development** at ${kb.personal.university}.\n\n**Education:**\n• Currently studying BS Information Technology (2024 - Present)\n• Graduated from CNHS with STEM strand (2022-2024)\n• Based in Camarines Norte, Philippines\n\nHe's highly motivated, detail-oriented, and passionate about learning new technologies to solve real-world problems!`;
+        return `**About Prince Jheck T. Juan:**\n\nPrince is a **20-year-old** IT student from **${kb.location}** 🇵🇭. He's currently pursuing **${kb.currentEducation}**.\n\n**Educational Background:**\n• **College:** ${kb.education.college}\n• **Senior High:** ${kb.education.seniorHigh}\n• **Junior High:** ${kb.education.juniorHigh}\n• **Elementary:** ${kb.education.elementary}\n\n**Top Achievements:**\n${kb.achievements.slice(0, 5).map(a => `✅ ${a}`).join('\n')}\n\nPrince is a highly motivated, detail-oriented developer with a strong academic foundation and proven leadership experience. He's passionate about creating innovative tech solutions!`;
     }
 
     getProjectsResponse() {
@@ -695,7 +695,7 @@ class PortfolioChatbot {
     getServicesResponse() {
         const kb = this.knowledgeBase;
         
-        return `**How Prince Can Help You:**\n\n${kb.services.map(service => `🔹 ${service}`).join('\n')}\n\nWhether you need a complete web application, database solution, or technical consultation, Prince has the skills and dedication to bring your project to life.\n\n**Why work with Prince?**\n• Strong technical foundation across multiple technologies\n• Proven track record with real-world projects\n• Detail-oriented and passionate about quality\n• Continuous learner staying updated with latest trends\n\nReady to collaborate? Check out the contact page to get in touch!`;
+        return `**How Prince Can Help You:**\n\n🔹 **Full-Stack Web Development** - Build complete web applications from frontend to backend\n🔹 **Database Design & Management** - Create efficient database systems (MySQL, MongoDB, Firebase)\n🔹 **API Integration** - Connect your applications with external services\n🔹 **System Development** - Desktop applications and management systems (Java, Python)\n🔹 **UI/UX Implementation** - Responsive, user-friendly interfaces with React and modern frameworks\n🔹 **Technical Consultation** - Technology advice and problem-solving\n\n**Why work with Prince?**\n✅ **Academic Excellence** - High Honors graduate\n✅ **Proven Track Record** - Multiple real-world projects\n✅ **National Recognition** - DAP National Finalist\n✅ **Leadership Experience** - SG Vice President, Club Officer\n✅ **Modern Tech Stack** - React, Node.js, MySQL, APIs\n✅ **Detail-Oriented** - Passionate about quality code\n✅ **Available Now** - Open for freelance, part-time, or collaborative projects\n\nInterested in collaborating? Visit the **Contact** page to get in touch!`;
     }
 
     getContactResponse() {
