@@ -6,7 +6,7 @@
 class PortfolioChatbot {
     constructor() {
         // OpenAI Integration Settings
-        this.useOpenAI = true; // Set to false to use only fallback system
+        this.useOpenAI = false; // Set to TRUE after adding your OpenAI API key
         this.openAIEndpoint = 'chatbot-openai.php';
         
         // Conversation history for better context
@@ -658,7 +658,13 @@ class PortfolioChatbot {
     getSkillsResponse(question) {
         const kb = this.knowledgeBase;
         
-        return `Prince has a comprehensive skill set across multiple domains:\n\n**Programming Languages:** ${kb.skills.programming.join(', ')}\n\n**Web Technologies:** ${kb.skills.web.join(', ')}\n\n**Database Systems:** ${kb.skills.database.join(', ')}\n\n**Tools & Frameworks:** ${kb.skills.tools.join(', ')}\n\nHe's particularly strong in JavaScript and Java, with expert-level proficiency. Would you like to know more about any specific technology?`;
+        // Safely access skills data
+        const programming = kb.skills?.programming?.join(', ') || 'Java, Python, JavaScript, PHP, C++';
+        const web = kb.skills?.web?.join(', ') || 'HTML5, CSS3, JavaScript, React, Node.js, Bootstrap';
+        const databases = kb.skills?.databases?.join(', ') || 'MySQL, MongoDB, Firebase';
+        const tools = kb.skills?.tools?.join(', ') || 'Git, GitHub, VS Code, Postman';
+        
+        return `Prince has a comprehensive skill set across multiple domains:\n\n**Programming Languages:** ${programming}\n\n**Web Technologies:** ${web}\n\n**Database Systems:** ${databases}\n\n**Tools & Frameworks:** ${tools}\n\nHe's particularly strong in JavaScript and Java, with expert-level proficiency. Would you like to know more about any specific technology?`;
     }
 
     getBackgroundResponse() {
