@@ -1,4 +1,7 @@
-# Professional Futuristic Portfolio Website
+# Professional Futuristic Portfolio Website - Prince Jheck T. Juan
+
+[![GitHub](https://img.shields.io/badge/GitHub-VIP1019-blue)](https://github.com/VIP1019)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5)](https://www.linkedin.com/in/princejheck-juan-27145a3a8)
 
 A modern, fully interactive personal portfolio website built with **HTML5, CSS3, JavaScript, and PHP** featuring extensive animations, multiple API integrations, and transaction-based features.
 
