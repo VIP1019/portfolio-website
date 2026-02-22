@@ -1,0 +1,74 @@
+EMAIL SETUP INSTRUCTIONS FOR PORTFOLIO CONTACT FORM
+=====================================================
+
+The contact form has been configured to send emails to: princejheckjuan023@gmail.com
+
+IMPORTANT: The PHP mail() function requires proper server configuration to work.
+
+OPTION 1: Using a Local Development Server (XAMPP, WAMP, etc.)
+----------------------------------------------------------------
+1. If using XAMPP:
+   - Open php.ini file (usually in C:\xampp\php\php.ini)
+   - Find and configure these settings:
+     
+     [mail function]
+     SMTP = smtp.gmail.com
+     smtp_port = 587
+     sendmail_from = your-email@gmail.com
+     sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"
+
+2. Configure sendmail (for XAMPP):
+   - Open sendmail.ini (usually in C:\xampp\sendmail\sendmail.ini)
+   - Configure:
+     
+     smtp_server=smtp.gmail.com
+     smtp_port=587
+     auth_username=your-email@gmail.com
+     auth_password=your-app-password
+     force_sender=your-email@gmail.com
+
+3. Enable "Less secure app access" or use App Password:
+   - Go to Google Account settings
+   - Enable 2-factor authentication
+   - Generate an App Password
+   - Use that password in sendmail.ini
+
+OPTION 2: Using PHPMailer (Recommended for Production)
+-------------------------------------------------------
+If you want a more reliable solution, consider using PHPMailer library.
+This is already configured in the contact-handler.php but requires PHPMailer installation.
+
+To install PHPMailer:
+1. Download PHPMailer from: https://github.com/PHPMailer/PHPMailer
+2. Or use Composer: composer require phpmailer/phpmailer
+
+OPTION 3: Using a Live Web Server
+----------------------------------
+Most web hosting providers have mail() function configured by default.
+Simply upload your files to the server and it should work.
+
+TESTING THE CONTACT FORM
+-------------------------
+1. Open index.php in your browser
+2. Scroll to the "Get In Touch" section
+3. Fill in the form with:
+   - Name: Test User
+   - Email: test@example.com
+   - Subject: Test Message
+   - Message: This is a test message
+4. Click "Send Message"
+5. Check debug.log file for email status
+6. Check princejheckjuan023@gmail.com inbox for the email
+
+TROUBLESHOOTING
+---------------
+- If email doesn't send, check debug.log file for errors
+- Messages are still saved to messages.json even if email fails
+- Ensure your server has proper SMTP configuration
+- Check spam folder in Gmail
+- Verify firewall isn't blocking SMTP ports
+
+FILES MODIFIED
+--------------
+- contact-handler.php: Enhanced with HTML email template
+- All forms now send to princejheckjuan023@gmail.com

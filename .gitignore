@@ -1,0 +1,45 @@
+# Cache files
+github_repos_cache.json
+github_activity_cache.json
+linkedin_posts_cache.json
+
+# Log files
+debug.log
+testimonial-log.txt
+error.log
+
+# Temporary files
+*.tmp
+tmp_*
+
+# Sensitive configuration (if any)
+# config.php
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node modules (if any)
+node_modules/
+package-lock.json
+
+# Environment files
+.env
+.env.local
+
+# Backup files
+*.backup
+*.backup.*
+.claude.json.backup*
+
+# User data (messages and testimonials - optional, can be committed)
+# messages.json
+# testimonials.json

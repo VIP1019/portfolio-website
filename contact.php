@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Prince Jheck T. Juan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>Prince Jheck</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About me</a></li>
+                <li><a href="skills.php">Skills</a></li>
+                <li><a href="projects.php">Projects</a></li>
+                <li><a href="contact.php">Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="stars"></div>
+        <div class="contact-hero-content">
+            <h1>Get In Touch</h1>
+            <p>Have a project in mind? Let's discuss and bring your ideas to life.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="contact-section">
+        <div class="section-container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2>Send Me a Message</h2>
+                    <form id="contactForm" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <span class="error-message" id="subjectError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-wrapper">
+                    <h2>Let's Connect</h2>
+                    <p>Have a project in mind? Let's discuss and bring your ideas to life. I'm always open to new opportunities and collaborations.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>princejheck.juan@email.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+63 (9635) 01-6749</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Brgy 1, Purok 7, Daet, Camarines Norte, Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section class="map-section">
+        <div class="section-container">
+            <h2 class="section-title">Find Me Here</h2>
+            <div class="map-wrapper">
+                <div class="map-overlay">
+                    <div class="location-badge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Daet, Camarines Norte</span>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.3157649217935!2d122.95744987574257!3d14.111232586162848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDA2JzQwLjQiTiAxMjLCsDU3JzM2LjEiRQ!5e0!3m2!1sen!2sph!4v1645678901234!5m2!1sen!2sph"
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-cards-section">
+        <div class="section-container">
+            <h2 class="section-title">Why Work With Me?</h2>
+            <div class="contact-cards-grid">
+                <div class="info-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Creative Solutions</h3>
+                    <p>I bring innovative ideas to every project, ensuring unique and effective solutions.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timely Delivery</h3>
+                    <p>I value your time and always strive to deliver projects on schedule.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Clear Communication</h3>
+                    <p>I believe in transparent communication throughout the project lifecycle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Links -->
+    <section class="social-section">
+        <div class="section-container">
+            <h2 class="section-title">Follow Me</h2>
+            <div class="social-icons-grid">
+                <a href="https://github.com" target="_blank" class="social-card">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank" class="social-card">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Prince Jheck T. Juan. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Success!</h2>
+            <p id="successMessage">Your message has been sent successfully.</p>
+            <button onclick="closeModal()" class="btn btn-primary">Close</button>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="emailjs-config.js"></script>
+    <!-- AI Chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-badge">Ask me anything!</span>
+        </div>
+        
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chatbot-title">
+                        <h4>Prince's AI Assistant</h4>
+                        <span class="chatbot-status">
+                            <span class="status-dot"></span>
+                            Online
+                        </span>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hi! 👋 I'm Prince's AI assistant. I can help you learn about:</p>
+                        <ul>
+                            <li>His skills and expertise</li>
+                            <li>Educational background</li>
+                            <li>Projects and achievements</li>
+                            <li>How he can help you</li>
+                            <li>Ways to collaborate</li>
+                        </ul>
+                        <p>Feel free to ask me anything!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-suggestions" id="chatbot-suggestions">
+                <button class="suggestion-chip" data-question="What are Prince's main skills?">
+                    💻 Main Skills
+                </button>
+                <button class="suggestion-chip" data-question="What can Prince help me with?">
+                    🤝 How can he help?
+                </button>
+                <button class="suggestion-chip" data-question="Tell me about Prince's background">
+                    👨‍🎓 Background
+                </button>
+                <button class="suggestion-chip" data-question="What projects has Prince worked on?">
+                    🚀 Projects
+                </button>
+            </div>
+            
+            <div class="chatbot-input-area">
+                <input 
+                    type="text" 
+                    id="chatbot-input" 
+                    class="chatbot-input" 
+                    placeholder="Type your question here..."
+                    autocomplete="off"
+                >
+                <button id="chatbot-send" class="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

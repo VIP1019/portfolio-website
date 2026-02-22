@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix EmailJS Gmail Scopes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        .error-box {
+            background: #ffe6e6;
+            border-left: 4px solid #ff4444;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .error-box code {
+            background: #ffcccc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .solution {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .steps {
+            counter-reset: step;
+            margin: 20px 0;
+        }
+        .step {
+            counter-increment: step;
+            margin: 20px 0;
+            padding-left: 50px;
+            position: relative;
+        }
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .step h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: transform 0.3s;
+        }
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix EmailJS Gmail Authentication</h1>
+        
+        <div class="error-box">
+            <h3>❌ Current Error:</h3>
+            <p><code>Gmail_API: Request had insufficient authentication scopes.</code></p>
+            <p style="margin-top: 10px;"><strong>What this means:</strong> Your Gmail service connection doesn't have permission to send emails.</p>
+        </div>
+
+        <div class="solution">
+            <h3>✅ The Solution:</h3>
+            <p>You need to <strong>reconnect your Gmail service</strong> with the correct permissions.</p>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <h3>Go to Email Services</h3>
+                <p>Click this link to open your EmailJS services page:</p>
+                <a href="https://dashboard.emailjs.com/admin" class="link-button" target="_blank">
+                    Open EmailJS Dashboard →
+                </a>
+            </div>
+
+            <div class="step">
+                <h3>Find Your Gmail Service</h3>
+                <p>Look for your service: <strong>service_1chtb53</strong></p>
+                <p>Click on it to open the service settings.</p>
+            </div>
+
+            <div class="step">
+                <h3>Disconnect Gmail</h3>
+                <p>Click the <strong>"Disconnect"</strong> or <strong>"Remove"</strong> button.</p>
+                <p>This removes the old connection with insufficient permissions.</p>
+            </div>
+
+            <div class="step">
+                <h3>Reconnect Gmail</h3>
+                <p>Click <strong>"Connect Account"</strong> or <strong>"Add Service"</strong></p>
+                <p>Choose <strong>Gmail</strong> again</p>
+                <p>Login with: <strong>princejheckjuan023@gmail.com</strong></p>
+            </div>
+
+            <div class="step">
+                <h3>⚠️ IMPORTANT: Grant ALL Permissions</h3>
+                <div class="warning">
+                    <strong>When Google asks for permissions:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>✅ Allow EmailJS to <strong>send emails</strong></li>
+                        <li>✅ Allow EmailJS to <strong>access Gmail</strong></li>
+                        <li>✅ Check <strong>"Select all"</strong> if available</li>
+                        <li>✅ Click <strong>"Allow"</strong> or <strong>"Continue"</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px; color: #856404;"><strong>Don't skip any permissions!</strong> That's what caused the error.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Save & Test</h3>
+                <p>After reconnecting:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Copy the new <strong>Service ID</strong> (if it changed)</li>
+                    <li>Go to your contact page: <code>http://localhost:3000/contact.php</code></li>
+                    <li>Send a test message</li>
+                    <li>Check your Gmail! 📬</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #f0f4ff; border-radius: 10px; text-align: center;">
+            <h3 style="color: #667eea; margin-bottom: 15px;">🚀 Quick Start</h3>
+            <a href="https://dashboard.emailjs.com/admin" class="link-button" target="_blank">
+                Fix Gmail Connection Now →
+            </a>
+            <p style="margin-top: 15px; color: #666;">This will take 2 minutes and fix the issue completely!</p>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 10px;">
+            <h4 style="color: #764ba2;">Alternative: Switch to Web3Forms</h4>
+            <p style="margin: 10px 0; color: #666;">If you're tired of EmailJS authentication issues, I can switch you to Web3Forms in 2 minutes - no Gmail connection needed!</p>
+            <p style="color: #999; font-size: 14px;">Just let me know if you want to switch instead.</p>
+        </div>
+    </div>
+</body>
+</html>

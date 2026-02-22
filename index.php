@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Jheck T. Juan - IT Software Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="github-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>Prince Jheck</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About me</a></li>
+                <li><a href="skills.php">Skills</a></li>
+                <li><a href="projects.php">Projects</a></li>
+                <li><a href="contact.php">Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="stars"></div>
+        <div class="floating-orb"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge">
+                    <i class="fas fa-rocket"></i>
+                    Information Technology Student
+                </div>
+                <h1>Building <span class="gradient-text">innovative digital</span> solutions.</h1>
+                <p>I'm Prince Jheck, a passionate IT student specializing in software development and web technologies. Exploring modern frameworks and creating real-world applications that solve problems.</p>
+                <a href="#projects" class="btn btn-primary">
+                    <span>Learn more</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="tech-circles">
+                <!-- Professional Profile Box Container -->
+                <div class="profile-box-container">
+                    <div class="box-glow-effect"></div>
+                    <div class="photo-box-frame">
+                        <img src="profile-photo.jpg" alt="Prince Jheck" class="profile-image">
+                    </div>
+                    <div class="box-info">
+                        <h3>Prince Jheck</h3>
+                        <p>IT Student & Developer</p>
+                        <div class="status-badge">
+                            <span class="status-dot"></span>
+                            <span>Available for work</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Prince Jheck, a 20-year-old Information Technology student specializing in software development. I'm highly motivated, detail-oriented, and passionate about learning new technologies to solve real-world problems.</p>
+                    <p>My goal is to become a full-stack web developer and create digital solutions that improve efficiency and accessibility. I enjoy building functional applications across web, mobile, and system design, with particular interest in API integration and IoT projects.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank" class="social-btn">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn Profile
+                        </a>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Major Projects</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Top 5</div>
+                        <div class="stat-label">IT Programming Contest</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">API Integration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+Tool call argument 'replace' pruned from message history.
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <h3>Ready to Start Your Next Project?</h3>
+            <p>Let's work together to bring your ideas to life. Get in touch and let's discuss your project.</p>
+            <div class="cta-buttons">
+                <a href="contact.php" class="btn btn-primary">Get in Touch</a>
+                <a href="projects.php" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Transaction Feature 2) -->
+    <section id="testimonials" class="testimonials">
+        <div class="section-container">
+            <h2 class="section-title">Feedback & Testimonials</h2>
+            <div class="testimonials-wrapper">
+                <div id="testimonialsList" class="testimonials-list"></div>
+                <form id="testimonialForm" class="testimonial-form">
+                    <h3>Leave a Testimonial</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" id="testName" required>
+                        <span class="error-message" id="testNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" id="testEmail" required>
+                        <span class="error-message" id="testEmailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="rating">
+                            <i class="fas fa-star" data-value="1"></i>
+                            <i class="fas fa-star" data-value="2"></i>
+                            <i class="fas fa-star" data-value="3"></i>
+                            <i class="fas fa-star" data-value="4"></i>
+                            <i class="fas fa-star" data-value="5"></i>
+                        </div>
+                        <span class="error-message" id="ratingError"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Feedback" id="testMessage" rows="4" required></textarea>
+                        <span class="error-message" id="testMessageError"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Submit Feedback</span>
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Stats Section (API Integration) -->
+    <section id="github" class="github-stats">
+        <div class="section-container">
+            <h2 class="section-title">GitHub Activity</h2>
+            <div id="githubStats" class="github-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Prince Jheck T. Juan. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Success!</h2>
+            <p id="successMessage">Your message has been sent successfully.</p>
+            <button onclick="closeModal()" class="btn btn-primary">Close</button>
+        </div>
+    </div>
+
+    <!-- AI Chatbot -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-badge">Ask me anything!</span>
+        </div>
+        
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="chatbot-title">
+                        <h4>Prince's AI Assistant</h4>
+                        <span class="chatbot-status">
+                            <span class="status-dot"></span>
+                            Online
+                        </span>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hi! 👋 I'm Prince's AI assistant. I can help you learn about:</p>
+                        <ul>
+                            <li>His skills and expertise</li>
+                            <li>Educational background</li>
+                            <li>Projects and achievements</li>
+                            <li>How he can help you</li>
+                            <li>Ways to collaborate</li>
+                        </ul>
+                        <p>Feel free to ask me anything!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-suggestions" id="chatbot-suggestions">
+                <button class="suggestion-chip" data-question="What are Prince's main skills?">
+                    💻 Main Skills
+                </button>
+                <button class="suggestion-chip" data-question="What can Prince help me with?">
+                    🤝 How can he help?
+                </button>
+                <button class="suggestion-chip" data-question="Tell me about Prince's background">
+                    👨‍🎓 Background
+                </button>
+                <button class="suggestion-chip" data-question="What projects has Prince worked on?">
+                    🚀 Projects
+                </button>
+            </div>
+            
+            <div class="chatbot-input-area">
+                <input 
+                    type="text" 
+                    id="chatbot-input" 
+                    class="chatbot-input" 
+                    placeholder="Type your question here..."
+                    autocomplete="off"
+                >
+                <button id="chatbot-send" class="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+[
+    {
+        "name": "kian juan",
+        "email": "princejheckjuan023@gmail.com",
+        "rating": 4,
+        "feedback": "dapat pink ang color",
+        "timestamp": "2026-02-22 11:09:37",
+        "ip": "::1",
+        "approved": true
+    },
+    {
+        "name": "Tom Jade Juan",
+        "email": "princejheckjuan023@gmail.com",
+        "rating": 4,
+        "feedback": "ganda be super ganda",
+        "timestamp": "2026-02-22 11:03:16",
+        "ip": "::1",
+        "approved": true
+    },
+    {
+        "name": "Tom Jade Juan",
+        "email": "princejheckjuan023@gmail.com",
+        "rating": 5,
+        "feedback": "the system is so good",
+        "timestamp": "2026-02-22 10:34:42",
+        "ip": "::1",
+        "approved": true
+    },
+    {
+        "name": "maricel maribel",
+        "email": "tomjadejuan426@gmail.com",
+        "rating": 4,
+        "feedback": "ganda website",
+        "timestamp": "2026-02-22 03:05:06",
+        "ip": "::1",
+        "approved": true
+    },
+    {
+        "name": "maricel maribel",
+        "email": "tomjadejuan426@gmail.com",
+        "rating": 4,
+        "feedback": "good website",
+        "timestamp": "2026-02-22 02:48:22",
+        "ip": "::1",
+        "approved": false
+    }
+]
