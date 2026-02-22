@@ -201,14 +201,6 @@
         </div>
     </section>
 
-    <!-- GitHub Stats Section (API Integration) -->
-    <section id="github" class="github-stats">
-        <div class="section-container">
-            <h2 class="section-title">GitHub Activity</h2>
-            <div id="githubStats" class="github-grid"></div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -308,6 +300,7 @@
     </div>
 
     <script src="chatbot-knowledge.js"></script>
+    <script src="chatbot-patterns.js"></script>
     <script src="script.js"></script>
     <script src="chatbot.js"></script>
 </body>
