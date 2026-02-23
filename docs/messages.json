@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Maricel Juan",
+        "email": "tomjadejuan426@gmail.com",
+        "subject": "appointment",
+        "message": "ganda ka jan mhie paayus ng laptop",
+        "timestamp": "2026-02-22 17:20:17",
+        "ip": "::1"
+    },
+    {
+        "name": "Maricel Juan",
+        "email": "tomjadejuan426@gmail.com",
+        "subject": "appointment",
+        "message": "i need to send an appointment to you guys",
+        "timestamp": "2026-02-22 10:36:55",
+        "ip": "::1"
+    },
+    {
+        "name": "mamamo",
+        "email": "tomjadejuan426@gmail.com",
+        "subject": "emelangabj",
+        "message": "hello universe philippine i need to contact you to make appointment",
+        "timestamp": "2026-02-22 10:00:33",
+        "ip": "::1"
+    },
+    {
+        "name": "mamamo",
+        "email": "tomjadejuan426@gmail.com",
+        "subject": "emelangabj",
+        "message": "ang ganda mo bessy wapps pa help po ako sa lahat",
+        "timestamp": "2026-02-22 08:17:54",
+        "ip": "::1"
+    },
+    {
+        "name": "mamamo",
+        "email": "tomjadejuan426@gmail.com",
+        "subject": "emelangabj",
+        "message": "hello po may i ask how can i interact with you",
+        "timestamp": "2026-02-22 07:26:00",
+        "ip": "::1"
+    }
+]

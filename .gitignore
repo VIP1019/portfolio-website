@@ -32,6 +32,18 @@ desktop.ini
 node_modules/
 package-lock.json
 
+# Next.js build output (not needed for HTML site)
+.next/
+out/
+build/
+dist/
+app/
+components/
+hooks/
+lib/
+public/
+styles/globals.css
+
 # Environment files
 .env
 .env.local
