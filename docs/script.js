@@ -167,25 +167,22 @@ if (testimonialForm) {
                 emailParams
             );
             
-            // Then save to database/JSON file
-            const response = await fetch('testimonial-handler.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(testimonialData)
-            });
+            // Show success message (Note: On GitHub Pages, testimonials won't be saved to JSON, 
+            // but email will be sent via EmailJS)
+            showSuccessModal('Thank you for your feedback! Your testimonial has been sent via email.');
+            testimonialForm.reset();
+            selectedRating = 0;
+            updateStarRating(0);
             
-            const result = await response.json();
-            
-            if (result.success) {
-                showSuccessModal('Thank you for your feedback! Your testimonial has been submitted and an email confirmation has been sent.');
-                testimonialForm.reset();
-                selectedRating = 0;
-                updateStarRating(0);
-                loadTestimonials();
-            } else {
-                showTestimonialError('testMessageError', result.message || 'Failed to submit testimonial');
+            // Try to save to PHP handler if available (will fail silently on GitHub Pages)
+            try {
+                await fetch('testimonial-handler.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testimonialData)
+                }).catch(() => {});
+            } catch (e) {
+                // Silently fail on GitHub Pages
             }
         } catch (error) {
             console.error('Error:', error);
@@ -418,12 +415,8 @@ async function loadGitHubStats() {
     githubStats.innerHTML = '<div class="github-loading"><div class="spinner"></div></div>';
     
     try {
-        const response = await fetch('github-repos.php');
-        const repos = await response.json();
-        
-        if (repos.error) {
-            throw new Error(repos.error);
-        }
+        // Use client-side GitHub API instead of PHP
+        const repos = await fetchGitHubRepos();
         
         if (!repos || repos.length === 0) {
             githubStats.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">No repositories found</p>';
