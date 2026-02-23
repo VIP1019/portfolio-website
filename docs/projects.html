@@ -785,8 +785,8 @@
             const noPostsMsg = document.getElementById('noPostsMessage');
 
             try {
-                // Use the new client-side LinkedIn API
-                const data = getLinkedInPosts();
+                // Use client-side LinkedIn API instead of PHP
+                const data = await fetchLinkedInPosts();
 
                 if (data.success && data.posts && data.posts.length > 0) {
                     allProjects = data.posts;
@@ -953,6 +953,8 @@
             });
         }
     </script>
-    <script src="linkedin-api.js"></script>
+    
+    <!-- API Scripts -->
+    <script src="linkedin-posts.js"></script>
 </body>
 </html>

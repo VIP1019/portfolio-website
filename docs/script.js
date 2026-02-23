@@ -418,12 +418,8 @@ async function loadGitHubStats() {
     githubStats.innerHTML = '<div class="github-loading"><div class="spinner"></div></div>';
     
     try {
-        const response = await fetch('github-repos.php');
-        const repos = await response.json();
-        
-        if (repos.error) {
-            throw new Error(repos.error);
-        }
+        // Use client-side GitHub API instead of PHP
+        const repos = await fetchGitHubRepos();
         
         if (!repos || repos.length === 0) {
             githubStats.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">No repositories found</p>';
