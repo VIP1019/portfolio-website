@@ -2,10 +2,10 @@
 // Replaces github-repos.php for GitHub Pages compatibility
 
 const GITHUB_USERNAME = 'VIP1019';
-const CACHE_KEY = 'github_repos_cache';
-const CACHE_DURATION = 3600000; // 1 hour in milliseconds
+const GITHUB_CACHE_KEY = 'github_repos_cache';
+const GITHUB_CACHE_DURATION = 3600000; // 1 hour
 
-// Featured/contributed projects to display
+// Featured/contributed projects
 const FEATURED_PROJECTS = [
     {
         id: 0,
@@ -25,11 +25,8 @@ const FEATURED_PROJECTS = [
 ];
 
 async function fetchGitHubRepos() {
-    // Check cache first
-    const cached = getFromCache(CACHE_KEY);
-    if (cached) {
-        return cached;
-    }
+    const cached = getCachedData(GITHUB_CACHE_KEY);
+    if (cached) return cached;
 
     try {
         const response = await fetch(
@@ -42,13 +39,9 @@ async function fetchGitHubRepos() {
             }
         );
 
-        if (!response.ok) {
-            throw new Error(`GitHub API returned ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
 
         const repos = await response.json();
-        
-        // Process repositories
         const processedRepos = repos.map(repo => ({
             id: repo.id,
             name: repo.name,
@@ -64,31 +57,21 @@ async function fetchGitHubRepos() {
             updated_at: repo.updated_at
         }));
 
-        // Combine featured projects with user repos
         const allRepos = [...FEATURED_PROJECTS, ...processedRepos];
-        
-        // Save to cache
-        saveToCache(CACHE_KEY, allRepos);
-        
+        setCachedData(GITHUB_CACHE_KEY, allRepos);
         return allRepos;
     } catch (error) {
         console.error('Error fetching GitHub repos:', error);
-        
-        // Return cached data if available, otherwise return featured projects
-        const cached = getFromCache(CACHE_KEY);
-        return cached || FEATURED_PROJECTS;
+        return getCachedData(GITHUB_CACHE_KEY) || FEATURED_PROJECTS;
     }
 }
 
-// Cache helper functions
-function getFromCache(key) {
+function getCachedData(key) {
     try {
         const cached = localStorage.getItem(key);
         if (cached) {
             const { data, timestamp } = JSON.parse(cached);
-            const now = Date.now();
-            
-            if (now - timestamp < CACHE_DURATION) {
+            if (Date.now() - timestamp < GITHUB_CACHE_DURATION) {
                 return data;
             }
         }
@@ -98,13 +81,12 @@ function getFromCache(key) {
     return null;
 }
 
-function saveToCache(key, data) {
+function setCachedData(key, data) {
     try {
-        const cacheData = {
+        localStorage.setItem(key, JSON.stringify({
             data: data,
             timestamp: Date.now()
-        };
-        localStorage.setItem(key, JSON.stringify(cacheData));
+        }));
     } catch (error) {
         console.error('Cache write error:', error);
     }

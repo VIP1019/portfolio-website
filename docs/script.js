@@ -167,23 +167,21 @@ if (testimonialForm) {
                 emailParams
             );
             
-            // Show success message (Note: On GitHub Pages, testimonials won't be saved to JSON, 
-            // but email will be sent via EmailJS)
+            // Show success - email sent via EmailJS
             showSuccessModal('Thank you for your feedback! Your testimonial has been sent via email.');
             testimonialForm.reset();
             selectedRating = 0;
             updateStarRating(0);
             
-            // Try to save to PHP handler if available (will fail silently on GitHub Pages)
+            // Try to save if PHP available (optional)
             try {
                 await fetch('testimonial-handler.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(testimonialData)
                 }).catch(() => {});
-            } catch (e) {
-                // Silently fail on GitHub Pages
-            }
+            } catch (e) {}
+        
         } catch (error) {
             console.error('Error:', error);
             showTestimonialError('testMessageError', 'Network error. Please try again. ' + error.message);
@@ -415,7 +413,7 @@ async function loadGitHubStats() {
     githubStats.innerHTML = '<div class="github-loading"><div class="spinner"></div></div>';
     
     try {
-        // Use client-side GitHub API instead of PHP
+        // Use client-side GitHub API
         const repos = await fetchGitHubRepos();
         
         if (!repos || repos.length === 0) {

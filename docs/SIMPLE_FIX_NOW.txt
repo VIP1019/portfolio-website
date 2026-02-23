@@ -1,0 +1,63 @@
+========================================
+     EMAILJS HTTP 412 - QUICK FIX
+========================================
+
+The HTTP 412 error means your EmailJS template has issues.
+
+HERE'S THE FASTEST FIX:
+-----------------------
+
+1. Go to your EmailJS dashboard:
+   https://dashboard.emailjs.com/admin/templates
+
+2. Click "Create New Template"
+
+3. Name it: "Contact Form Simple"
+
+4. Use EXACTLY this:
+
+   Subject:
+   -------
+   New Contact from {{from_name}}
+
+   Content:
+   --------
+   Name: {{from_name}}
+   Email: {{from_email}}
+   Subject: {{subject}}
+   Message: {{message}}
+
+5. Click Save
+
+6. COPY the new Template ID (looks like: template_abc123)
+
+7. Open: emailjs-config.js
+
+8. Replace the templateId line:
+   templateId: 'YOUR_NEW_TEMPLATE_ID_HERE'
+
+9. Save and test again!
+
+========================================
+
+OR - Try This Alternative:
+--------------------------
+Your current template might have hidden characters or
+settings causing the 412 error.
+
+Go to: https://dashboard.emailjs.com/admin/templates/template_2fwdxx9
+
+Click "Duplicate Template"
+This creates a fresh copy without any corruption.
+Use the new template ID.
+
+========================================
+
+BEST OPTION - Use Web3Forms Instead:
+------------------------------------
+If EmailJS keeps failing, I can switch you to Web3Forms
+which is even simpler and more reliable.
+
+Just say "switch to web3forms" and I'll do it in 2 minutes!
+
+========================================

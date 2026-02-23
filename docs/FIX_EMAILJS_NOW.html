@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix EmailJS Template - HTTP 412 Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .error-box {
+            background: rgba(255, 71, 87, 0.2);
+            border-left: 4px solid #ff4757;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .error-box h2 {
+            color: #ff4757;
+            margin-bottom: 0.5rem;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .step h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .code-box {
+            background: #1a1a2e;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-box pre {
+            color: #4CAF50;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .variable {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin: 1rem 0.5rem 1rem 0;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .success-box {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4CAF50;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-left: 4px solid #FFC107;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        ul {
+            margin-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .highlight {
+            background: rgba(255, 215, 0, 0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix EmailJS HTTP 412 Error</h1>
+        
+        <div class="error-box">
+            <h2>❌ Current Problem:</h2>
+            <p><strong>HTTP 412 (Precondition Failed)</strong> - Your EmailJS template variables don't match the code!</p>
+            <p>EmailJS is rejecting your emails because the template expects different variable names.</p>
+        </div>
+
+        <div class="step">
+            <h3>📋 Step 1: Go to EmailJS Dashboard</h3>
+            <p>Click the button below to open your EmailJS template editor:</p>
+            <a href="https://dashboard.emailjs.com/admin/templates/template_2fwdxx9" target="_blank" class="btn">
+                🚀 Open EmailJS Template
+            </a>
+            <p style="margin-top: 1rem;"><small>Login if needed, then click "Edit" on your template</small></p>
+        </div>
+
+        <div class="step">
+            <h3>✏️ Step 2: Update Template Content</h3>
+            
+            <p><strong>Subject Line (copy exactly):</strong></p>
+            <div class="code-box">
+                <pre>New Message from {{from_name}} - {{subject}}</pre>
+            </div>
+
+            <p><strong>Email Body (copy exactly):</strong></p>
+            <div class="code-box">
+                <pre>Hello,
+
+You have received a new contact form submission from your portfolio website.
+
+From: {{from_name}}
+Email: {{from_email}}
+Subject: {{subject}}
+
+Message:
+{{message}}
+
+---
+Sent from Portfolio Contact Form
+Time: {{timestamp}}</pre>
+            </div>
+
+            <div class="warning">
+                <p><strong>⚠️ IMPORTANT:</strong> The variable names MUST be typed <strong>exactly</strong> as shown with double curly braces!</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>⚙️ Step 3: Configure Template Settings</h3>
+            
+            <p>Scroll down to "Settings" section and configure:</p>
+            <ul>
+                <li><strong>To Email:</strong> <span class="highlight">princejheckjuan023@gmail.com</span></li>
+                <li><strong>From Name:</strong> <span class="variable">{{from_name}}</span></li>
+                <li><strong>Reply To:</strong> <span class="variable">{{from_email}}</span></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>📝 Step 4: Verify These Variables Exist</h3>
+            <p>Make sure your template uses EXACTLY these variables:</p>
+            <ul>
+                <li><span class="variable">{{from_name}}</span> - Sender's name</li>
+                <li><span class="variable">{{from_email}}</span> - Sender's email</li>
+                <li><span class="variable">{{subject}}</span> - Message subject</li>
+                <li><span class="variable">{{message}}</span> - Message content</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>💾 Step 5: Save Template</h3>
+            <p>Click the <strong>"Save"</strong> button at the bottom of the template editor</p>
+            <p>Wait for confirmation message: "Template saved successfully"</p>
+        </div>
+
+        <div class="step">
+            <h3>🧪 Step 6: Test Your Contact Form</h3>
+            <p>After saving the template:</p>
+            <ol>
+                <li>Go back to: <code>http://localhost:3000/contact.php</code></li>
+                <li>Fill out the form with test data</li>
+                <li>Click "Send Message"</li>
+                <li>Check your Gmail: <strong>princejheckjuan023@gmail.com</strong></li>
+            </ol>
+        </div>
+
+        <div class="success-box">
+            <h2>✅ After Fixing:</h2>
+            <p>You should see:</p>
+            <ul>
+                <li>✅ Success message on your website</li>
+                <li>✅ Email in your Gmail inbox (within 2-3 seconds!)</li>
+                <li>✅ No more HTTP 412 errors in console</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🆘 Still Not Working?</h3>
+            <p>If you still get errors after updating the template:</p>
+            <ul>
+                <li>Clear your browser cache (Ctrl + Shift + Delete)</li>
+                <li>Refresh the contact page (Ctrl + F5)</li>
+                <li>Try sending again</li>
+                <li>Check EmailJS dashboard → "Email History" for details</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://dashboard.emailjs.com/admin/templates/template_2fwdxx9" target="_blank" class="btn">
+                🚀 Fix Template Now
+            </a>
+            <a href="http://localhost:3000/contact.php" class="btn">
+                📧 Test Contact Form
+            </a>
+        </div>
+    </div>
+</body>
+</html>

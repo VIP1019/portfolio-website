@@ -1,0 +1,85 @@
+═══════════════════════════════════════════════════════════════
+  EMAILJS 422 ERROR - COMMON CAUSES & FIXES
+═══════════════════════════════════════════════════════════════
+
+A 422 error means EmailJS rejected the request. Here's what to check:
+
+═══════════════════════════════════════════════════════════════
+  MOST COMMON ISSUE: Template "To Email" Setting
+═══════════════════════════════════════════════════════════════
+
+In your EmailJS template, check the "To Email" field on the right side:
+
+❌ WRONG: {{email}}  (trying to use a variable)
+✅ RIGHT: princejheckjuan023@gmail.com  (your actual email)
+
+OR if you want dynamic:
+✅ RIGHT: Use {{email}} but make sure to set a DEFAULT email in template settings
+
+
+═══════════════════════════════════════════════════════════════
+  QUICK FIX STEPS:
+═══════════════════════════════════════════════════════════════
+
+1. Go to: https://dashboard.emailjs.com/admin/templates/template_14hkl4h
+
+2. Look at the right sidebar under "Settings"
+
+3. Find "To Email" field
+
+4. Change it to: princejheckjuan023@gmail.com
+
+5. Click SAVE
+
+6. Try submitting testimonial again
+
+
+═══════════════════════════════════════════════════════════════
+  OTHER POSSIBLE CAUSES:
+═══════════════════════════════════════════════════════════════
+
+✓ Template expects variables that aren't being sent
+✓ Service ID is wrong
+✓ Template ID is wrong  
+✓ Public Key is wrong
+✓ EmailJS free tier limit reached (200 emails/month)
+
+
+═══════════════════════════════════════════════════════════════
+  DEBUGGING TIPS:
+═══════════════════════════════════════════════════════════════
+
+1. Open browser console (F12)
+2. Look for the console.log message showing the params being sent
+3. Compare with what your template expects
+4. Check EmailJS dashboard for error details
+
+
+═══════════════════════════════════════════════════════════════
+  WHAT I JUST FIXED:
+═══════════════════════════════════════════════════════════════
+
+✓ Added extra variables to emailParams for compatibility:
+  - email: email
+  - message: feedback
+  
+✓ Added console.log to see what's being sent
+
+✓ Updated template ID to use your actual ID
+
+
+═══════════════════════════════════════════════════════════════
+  TRY THIS NOW:
+═══════════════════════════════════════════════════════════════
+
+1. Fix the "To Email" in your template (most likely issue)
+2. Refresh your website
+3. Submit a test testimonial
+4. Check browser console for logs
+5. Let me know what you see!
+
+
+Need more help? Share:
+- Screenshot of your template's right sidebar (Settings section)
+- What the console.log shows
+- Any error message from EmailJS dashboard
