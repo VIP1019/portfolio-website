@@ -1,0 +1,101 @@
+═══════════════════════════════════════════════════════════════════════════════
+    EMAILJS TESTIMONIAL TEMPLATE - COPY & PASTE
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 1: Set Template ID
+------------------------
+Template ID: template_testimonial
+Template Name: Portfolio Testimonial Notification (or whatever you want)
+
+
+STEP 2: Set Subject Line
+-------------------------
+Subject: 🎉 New Testimonial from {{from_name}} - {{stars}}
+
+
+STEP 3: Set "To email" field
+-----------------------------
+Enter YOUR email address where you want to receive notifications
+
+
+STEP 4: Choose Content Type
+----------------------------
+You have TWO options:
+
+═══════════════════════════════════════════════════════════════════════════════
+
+OPTION A: SIMPLE TEXT VERSION (Plain Text)
+═══════════════════════════════════════════════════════════════════════════════
+
+Hello!
+
+🎉 NEW TESTIMONIAL RECEIVED!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 FROM:      {{from_name}}
+📧 EMAIL:     {{from_email}}
+⭐ RATING:    {{stars}} ({{rating}}/5)
+🕒 SUBMITTED: {{timestamp}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💬 FEEDBACK MESSAGE:
+
+"{{feedback}}"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ℹ️  This testimonial has been automatically saved to your portfolio website
+   and is now visible to all visitors.
+
+View it here: http://localhost:3000/index.php#testimonials
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Best regards,
+Your Portfolio Testimonial System
+
+═══════════════════════════════════════════════════════════════════════════════
+
+OPTION B: BEAUTIFUL HTML VERSION (Use the HTML file!)
+═══════════════════════════════════════════════════════════════════════════════
+
+For a beautiful, styled email:
+1. Open file: TESTIMONIAL_EMAIL_TEMPLATE_HTML.html
+2. Copy ALL the HTML code
+3. Paste it into the EmailJS Content field (make sure you're in HTML mode)
+
+The HTML version includes:
+- Beautiful gradient header
+- Star rating display
+- Profile avatar with first letter
+- Styled feedback box
+- Action buttons
+- Professional footer with social links
+
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 5: Save Template
+----------------------
+Click the "Save" button in EmailJS
+
+═══════════════════════════════════════════════════════════════════════════════
+
+AVAILABLE VARIABLES:
+--------------------
+{{from_name}}     - Person's name
+{{from_email}}    - Person's email
+{{rating}}        - Number (1, 2, 3, 4, or 5)
+{{stars}}         - Star emojis (⭐, ⭐⭐, ⭐⭐⭐, etc.)
+{{feedback}}      - The testimonial message
+{{timestamp}}     - Date and time when submitted
+
+These variables are automatically replaced with actual data when email is sent.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DONE! You're all set! 🎉
+
+Test it by submitting a testimonial on your website.
+
+═══════════════════════════════════════════════════════════════════════════════

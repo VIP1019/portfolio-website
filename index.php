@@ -69,36 +69,11 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- GitHub Activity Section (API Integration) -->
+    <section id="github" class="github-stats">
         <div class="section-container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Prince Jheck, a 20-year-old Information Technology student specializing in software development. I'm highly motivated, detail-oriented, and passionate about learning new technologies to solve real-world problems.</p>
-                    <p>My goal is to become a full-stack web developer and create digital solutions that improve efficiency and accessibility. I enjoy building functional applications across web, mobile, and system design, with particular interest in API integration and IoT projects.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/princejheck-juan-27145a3a8" target="_blank" class="social-btn">
-                            <i class="fab fa-linkedin"></i>
-                            LinkedIn Profile
-                        </a>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Major Projects</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">Top 5</div>
-                        <div class="stat-label">IT Programming Contest</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">8+</div>
-                        <div class="stat-label">Technologies</div>
-                    </div>
-                </div>
-            </div>
+            <h2 class="section-title">GitHub Activity</h2>
+            <div id="githubStats" class="github-grid"></div>
         </div>
     </section>
 
@@ -299,6 +274,10 @@
         </div>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="emailjs-config.js"></script>
+    
     <script src="chatbot-knowledge.js"></script>
     <script src="chatbot-patterns.js"></script>
     <script src="script.js"></script>

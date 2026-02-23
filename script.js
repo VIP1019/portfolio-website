@@ -146,6 +146,28 @@ if (testimonialForm) {
         };
         
         try {
+            // Send email via EmailJS first
+            const emailParams = {
+                from_name: name,
+                from_email: email,
+                email: email, // Add this for template compatibility
+                rating: selectedRating,
+                feedback: feedback,
+                message: feedback, // Add this for template compatibility
+                stars: '⭐'.repeat(selectedRating),
+                timestamp: new Date().toLocaleString()
+            };
+            
+            console.log('Sending testimonial email with params:', emailParams);
+            
+            // Send email using EmailJS
+            await emailjs.send(
+                EMAILJS_CONFIG.serviceId,
+                EMAILJS_CONFIG.testimonialTemplateId || 'template_14hkl4h',
+                emailParams
+            );
+            
+            // Then save to database/JSON file
             const response = await fetch('testimonial-handler.php', {
                 method: 'POST',
                 headers: {
@@ -157,7 +179,7 @@ if (testimonialForm) {
             const result = await response.json();
             
             if (result.success) {
-                showSuccessModal('Thank you for your feedback! Your testimonial has been submitted.');
+                showSuccessModal('Thank you for your feedback! Your testimonial has been submitted and an email confirmation has been sent.');
                 testimonialForm.reset();
                 selectedRating = 0;
                 updateStarRating(0);
@@ -167,7 +189,7 @@ if (testimonialForm) {
             }
         } catch (error) {
             console.error('Error:', error);
-            showTestimonialError('testMessageError', 'Network error. Please try again.');
+            showTestimonialError('testMessageError', 'Network error. Please try again. ' + error.message);
         } finally {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
