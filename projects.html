@@ -785,8 +785,8 @@
             const noPostsMsg = document.getElementById('noPostsMessage');
 
             try {
-                const response = await fetch('linkedin-embed-posts.html');
-                const data = await response.json();
+                // Use client-side LinkedIn API instead of PHP
+                const data = await fetchLinkedInPosts();
 
                 if (data.success && data.posts && data.posts.length > 0) {
                     allProjects = data.posts;
@@ -953,5 +953,8 @@
             });
         }
     </script>
+    
+    <!-- API Scripts -->
+    <script src="linkedin-posts.js"></script>
 </body>
 </html>
