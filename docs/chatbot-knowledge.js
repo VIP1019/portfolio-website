@@ -11,7 +11,7 @@ const portfolioKnowledge = {
         email: "princejheckjuan023@gmail.com",
         github: "https://github.com/VIP1019",
         linkedin: "https://www.linkedin.com/in/princejheck-juan-27145a3a8",
-        summary: "Passionate 20-year-old Information Technology student specializing in Software Development at Camarines Norte State College. Recognized as an International Finalist at the APAC Stellar Hackathon 2026 and a DAP National Finalist. Proven track record in full-stack development, blockchain (Stellar/Soroban), IoT, and community-focused technology solutions."
+        summary: "Passionate 20-year-old Information Technology student specializing in Software Development at Camarines Norte State College. An active challenger in global and national competitions like the APAC Stellar Hackathon (International Finalist) and the Development Academy of the Philippines NextGenPH (National Finalist). Proven track record in full-stack development, blockchain (Stellar/Soroban), IoT, and community-focused technology solutions."
     },
 
     education: {
@@ -42,15 +42,15 @@ const portfolioKnowledge = {
         {
             title: "International Finalist - APAC Stellar Hackathon Grand Finale 2026",
             role: "Lead Developer & Full-Stack Developer of PUNDAR",
-            details: "Qualified as an International Finalist representing the Philippines against top teams from Vietnam and Indonesia for the Grand Finale on July 31, 2026. Selected out of 122 participating teams nationwide during the Build on Stellar Philippines Demo Day.",
+            details: "Qualified as an International Finalist representing the Philippines against top teams from Vietnam and Indonesia for the Grand Finale on July 31, 2026.",
             project: "PUNDAR (Progressive Unified Network for Digital Asset Resilience)",
             tech: "Stellar Blockchain, Soroban Smart Contracts, Kotlin, Full-Stack Web3",
             impact: "Digitizes traditional community savings (paluwagan), group payments, and financial reputation building."
         },
         {
-            title: "National Finalist - Development Academy of the Philippines (DAP 2025)",
+            title: "National Finalist - Development Academy of the Philippines NextGenPH (DAP 2025)",
             role: "Innovator / Developer",
-            details: "Recognized as a National Finalist for DementAId at the Development Academy of the Philippines (DAP).",
+            details: "Recognized as a National Finalist for DementAId at the Development Academy of the Philippines NextGenPH competition.",
             project: "DementAId: An AI-Powered Smart Anklet and Mobile Application",
             tech: "Artificial Intelligence, IoT Anklet Hardware, Mobile Application",
             impact: "Designed to provide safer, smarter, and proactive patient care for individuals suffering from dementia."

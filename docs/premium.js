@@ -103,7 +103,7 @@
         /* 7. Typed role line */
         var typed = document.querySelector('.hero-role .typed');
         if (typed) {
-            var roles = ['Full-Stack Developer', 'Blockchain Builder (Stellar / Soroban)', 'IoT & AI Innovator', 'International Hackathon Finalist'];
+            var roles = ['Full-Stack Developer', 'Web3 & Blockchain Builder', 'IoT & AI Innovator', 'Competition Finalist & Innovator'];
             if (reduceMotion) { typed.textContent = roles[0]; }
             else {
                 var ri = 0, ci = 0, del = false;
