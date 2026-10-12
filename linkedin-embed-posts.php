@@ -15,6 +15,20 @@ function getLinkedInEmbeddedPosts() {
     // Generated on 2/22/2026 at 9:05:32 PM
     return [
         [
+            'id' => 'embed7',
+            'title' => 'International Finalist - APAC Stellar Hackathon Grand Finale 2026 (PUNDAR)',
+            'embedCode' => '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7485391370912718848" height="1740" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>',
+            'type' => 'Software Project',
+            'hasEmbed' => true
+        ],
+        [
+            'id' => 'embed6',
+            'title' => 'BSIT Professional Portfolio & Career Journey',
+            'embedCode' => '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7477388177108848641" height="1028" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>',
+            'type' => 'Web Development',
+            'hasEmbed' => true
+        ],
+        [
             'id' => 'embed1',
             'title' => 'National Finalist - Development Academy of the Philippines (2025)',
             'embedCode' => '<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7426281432005627905" height="627" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>',

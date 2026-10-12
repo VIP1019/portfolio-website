@@ -1,144 +1,189 @@
-// Comprehensive Knowledge Base for Prince Jheck's Portfolio Chatbot
+// Comprehensive RAG Knowledge Base for Prince Jheck's Portfolio Chatbot
 const portfolioKnowledge = {
-    // Personal Information
     personal: {
         fullName: "Prince Jheck T. Juan",
-        nickname: "Prince Jheck",
+        preferredName: "Prince Jheck",
         age: 20,
         nationality: "Filipino",
         location: "Daet, Camarines Norte, Philippines",
-        status: "Available for work",
-        email: "princejheckjuan023@gmail.com"
+        status: "Available for internships, freelance, and software development work",
+        role: "Software Developer & IT Student",
+        email: "princejheckjuan023@gmail.com",
+        github: "https://github.com/VIP1019",
+        linkedin: "https://www.linkedin.com/in/princejheck-juan-27145a3a8",
+        summary: "Passionate 20-year-old Information Technology student specializing in Software Development at Camarines Norte State College. Recognized as an International Finalist at the APAC Stellar Hackathon 2026 and a DAP National Finalist. Proven track record in full-stack development, blockchain (Stellar/Soroban), IoT, and community-focused technology solutions."
     },
 
-    // Education
     education: {
-        current: {
-            level: "College",
-            degree: "Bachelor of Science in Information Technology",
+        college: {
+            degree: "Bachelor of Science in Information Technology (BSIT)",
             specialization: "Software Development",
-            school: "Camarines Norte State College",
-            location: "Daet, Camarines Norte",
-            year: "2024 - Present",
-            status: "In Progress"
+            institution: "Camarines Norte State College (CNSC)",
+            location: "Daet, Camarines Norte, Philippines",
+            period: "2024 - Present",
+            status: "Current Student"
         },
         seniorHigh: {
-            level: "Senior High School",
-            strand: "Science Technology Engineering Mathematics (STEM)",
-            school: "Camarines Norte Senior High School",
+            strand: "Science, Technology, Engineering, and Mathematics (STEM)",
+            institution: "Camarines Norte Senior High School",
             location: "Daet, Camarines Norte",
-            year: "2022 - 2024",
-            status: "Graduated with High Honors"
+            period: "2022 - 2024",
+            honors: "Graduated with High Honors, Best in Research, Best in Innovation"
         },
         juniorHigh: {
-            level: "Junior High School",
-            school: "Camarines Norte National High School",
+            institution: "Camarines Norte National High School",
             location: "Daet, Camarines Norte",
-            year: "2018 - 2022",
-            status: "Consistent Honor Student"
-        },
-        elementary: {
-            level: "Elementary",
-            school: "Daet Elementary School",
-            location: "Daet, Camarines Norte",
-            year: "2017",
-            status: "Graduate"
+            period: "2018 - 2022",
+            honors: "Consistent Honor Student"
         }
     },
 
-    // Achievements & Awards
-    achievements: [
-        "Graduated with High Honors in Senior High School",
-        "Consistent Honor Student in Junior High School",
-        "Best in Research Awardee",
-        "Best in Innovation Awardee",
-        "National Finalist - Development Academy of the Philippines (DAP)",
-        "Student Government (SG) Vice President for Planning and Development",
-        "Former Vice President of the Math Club",
-        "Public Information Officer (PIO) of YES-O",
-        "Auditor of the Filipino Club",
-        "Former SSG Representative",
-        "DSTF Participant (2018)",
-        "DOST I Make, We Make Participant",
-        "Attended CCS Seminar on Technology and Student Development"
+    hackathonsAndHonors: [
+        {
+            title: "International Finalist - APAC Stellar Hackathon Grand Finale 2026",
+            role: "Lead Developer & Full-Stack Developer of PUNDAR",
+            details: "Qualified as an International Finalist representing the Philippines against top teams from Vietnam and Indonesia for the Grand Finale on July 31, 2026. Selected out of 122 participating teams nationwide during the Build on Stellar Philippines Demo Day.",
+            project: "PUNDAR (Progressive Unified Network for Digital Asset Resilience)",
+            tech: "Stellar Blockchain, Soroban Smart Contracts, Kotlin, Full-Stack Web3",
+            impact: "Digitizes traditional community savings (paluwagan), group payments, and financial reputation building."
+        },
+        {
+            title: "National Finalist - Development Academy of the Philippines (DAP 2025)",
+            role: "Innovator / Developer",
+            details: "Recognized as a National Finalist for DementAId at the Development Academy of the Philippines (DAP).",
+            project: "DementAId: An AI-Powered Smart Anklet and Mobile Application",
+            tech: "Artificial Intelligence, IoT Anklet Hardware, Mobile Application",
+            impact: "Designed to provide safer, smarter, and proactive patient care for individuals suffering from dementia."
+        },
+        {
+            title: "Academic & Leadership Awards",
+            details: [
+                "Graduated with High Honors (Senior High School STEM)",
+                "Best in Research Awardee",
+                "Best in Innovation Awardee",
+                "Consistent Honor Student throughout Junior High School",
+                "College Student Government (SG) Vice President for Planning and Development (CCMS)",
+                "Former Vice President of the Mathematics Club",
+                "Public Information Officer (PIO) of YES-O",
+                "Auditor of the Filipino Club",
+                "Former Supreme Student Government (SSG) Representative"
+            ]
+        }
     ],
 
-    // Skills
     skills: {
-        programmingLanguages: ["Java", "Python", "JavaScript", "PHP", "C++"],
-        webTechnologies: ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Bootstrap", "Tailwind CSS"],
-        databases: ["MySQL", "MongoDB", "Firebase"],
-        tools: ["Git", "GitHub", "VS Code", "Eclipse", "IntelliJ IDEA", "Postman"],
-        frameworks: ["React", "Express.js", "Laravel"],
-        other: ["API Integration", "IoT Development", "Responsive Design", "RESTful APIs"]
+        programmingLanguages: ["Java", "Kotlin", "TypeScript", "JavaScript", "Python", "PHP", "C++", "Rust (Soroban)"],
+        webAndFrameworks: ["React.js", "Node.js", "Express.js", "HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "RESTful APIs"],
+        blockchainAndWeb3: ["Stellar Ecosystem", "Soroban Smart Contracts", "FinTech & Digital Paluwagan Integrations"],
+        mobileAndIoT: ["Android (Kotlin)", "IoT Hardware Prototyping", "Sensor Integration", "Microcontrollers"],
+        databases: ["MySQL", "SQLite", "MongoDB", "Firebase"],
+        developerTools: ["Git", "GitHub", "VS Code", "Postman", "Figma", "IntelliJ IDEA", "Eclipse"]
     },
 
-    // Projects
-    projects: [
+    featuredProjects: [
+        {
+            name: "PUNDAR (Progressive Unified Network for Digital Asset Resilience)",
+            tag: "Web3 / FinTech / Blockchain",
+            role: "Lead Developer & Full-Stack Developer",
+            description: "A decentralized financial platform built on Stellar and Soroban. It transforms everyday community savings (paluwagan) and group contributions into verifiable digital financial reputations and micro-investment opportunities.",
+            technologies: ["Stellar Blockchain", "Soroban Smart Contracts", "Kotlin", "Web3"],
+            github: "https://github.com/VIP1019/Pundar-stellar"
+        },
+        {
+            name: "DementAId",
+            tag: "AI & Healthcare IoT",
+            role: "Lead Developer & System Architect",
+            description: "An AI-powered smart anklet hardware and mobile companion application designed for proactive and safer dementia patient monitoring and emergency alerts. Recognized as DAP National Finalist.",
+            technologies: ["Artificial Intelligence", "IoT Hardware", "Mobile App", "Sensors"]
+        },
+        {
+            name: "ReliefLink (disaster-relief-link)",
+            tag: "Web Development / Public Service",
+            role: "Full-Stack Developer",
+            description: "Web-based disaster relief management system for municipalities. Allows barangay officials to submit disaster reports while prioritizing affected zones with weather API and instant notifications.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "Weather API", "MySQL"],
+            github: "https://github.com/VIP1019/disaster-relief-link"
+        },
+        {
+            name: "Lelis Realty Management System",
+            tag: "Enterprise Web App",
+            role: "Full-Stack Developer",
+            description: "Real Estate Appraisal and Brokerage Management System designed to streamline property listings, appraisal computations, client CRM, and transaction tracking.",
+            technologies: ["TypeScript", "React", "Node.js", "Database Management"],
+            github: "https://github.com/VIP1019/Lelis-Realty-Real-Estate-Appraisal-Brokerage"
+        },
+        {
+            name: "StaCruz Property Custodian Management System",
+            tag: "Government Inventory System",
+            role: "Co-Developer (Contributed)",
+            description: "Property custodian management platform built for Sta. Cruz, Laguna government offices to streamline equipment accountability, inventory logs, and property audits.",
+            technologies: ["PHP", "MySQL", "Inventory Management", "Bootstrap"],
+            github: "https://github.com/jailenannm-web/StaCruzPropertyCustodianSystem"
+        },
         {
             name: "Digital Queue Management System",
-            description: "A console-based system that manages queues for educational assistance payout using threading and file I/O operations. Handles concurrent requests efficiently.",
-            technologies: ["Java", "Threading", "File I/O"],
-            category: "System Development"
+            tag: "Desktop / System Software",
+            role: "Software Developer",
+            description: "Multithreaded console and desktop application managing concurrent queues for educational assistance payouts using threading and persistent file I/O operations.",
+            technologies: ["Java", "Concurrency / Threading", "File I/O", "Data Structures"]
         },
         {
             name: "Library Management System",
-            description: "A complete system to organize and manage library records including book listings, borrowing, and returns. Features a user-friendly Swing GUI interface.",
-            technologies: ["Java", "Swing GUI", "OOP", "File I/O"],
-            category: "Desktop Application"
+            tag: "Desktop Software",
+            role: "Software Developer",
+            description: "Comprehensive library operations software handling book catalogs, patron memberships, borrow/return transactions, and penalties via a Java Swing graphical interface.",
+            technologies: ["Java", "Swing GUI", "OOP", "File I/O"]
         },
         {
-            name: "Community Transportation & Ride-Sharing System",
-            description: "A web-based application connecting community members for ridesharing and transport planning. Features real-time updates and location tracking.",
-            technologies: ["HTML5", "CSS3", "JavaScript", "MySQL", "API Integration"],
-            category: "Web Application"
+            name: "9Tech Mobile Application",
+            tag: "Mobile Development",
+            role: "Mobile Developer",
+            description: "Android application streamlining inventory monitoring, repair logs, and warranty tracking for electronic repair businesses.",
+            technologies: ["Android", "Kotlin", "SQLite"]
         },
         {
-            name: "Personal Portfolio Website",
-            description: "A professional portfolio website showcasing skills, projects, and achievements with API integrations (GitHub, EmailJS, Contact Form) and transaction features.",
-            technologies: ["HTML", "CSS", "JavaScript", "PHP", "EmailJS", "GitHub API"],
-            category: "Web Development"
+            name: "LUMINA Mental Wellness App",
+            tag: "Mobile AI Application",
+            role: "Mobile Developer",
+            description: "Student mental well-being companion offering journaling, mood tracking, sentiment analysis, and Filipino cultural proverbs for motivation.",
+            technologies: ["Mobile Development", "Sentiment Analysis", "Kotlin"]
         }
     ],
 
-    // Career Goals
-    careerGoals: [
-        "Become a Full-Stack Web Developer mastering both frontend and backend technologies",
-        "Create innovative digital solutions that improve efficiency and accessibility",
-        "Explore emerging technologies like IoT, AI, and system automation",
-        "Lead and mentor others in the tech industry and contribute to open-source projects"
+    repositories: [
+        { name: "Pundar-stellar", desc: "Decentralized financial platform using Stellar & Soroban for digital paluwagan", lang: "Kotlin / Web3" },
+        { name: "portfolio-website", desc: "Interactive developer portfolio with API integrations and AI assistant", lang: "HTML / CSS / JS" },
+        { name: "StaCruzPropertyCustodianSystem", desc: "Government property custodian inventory management system", lang: "PHP" },
+        { name: "CCMS-GRACE", desc: "College of Computing and Multimedia Studies Academic Portal", lang: "HTML / PHP" },
+        { name: "pundar-gcash-landing", desc: "Pundar GCash on-ramp/off-ramp interface and landing page", lang: "TypeScript" },
+        { name: "SiteBuilder", desc: "Web-based responsive website layout and builder utility", lang: "JavaScript" },
+        { name: "disaster-relief-link", desc: "ReliefLink municipal disaster reporting & relief dispatch system", lang: "HTML / PHP" },
+        { name: "glyza", desc: "Custom modern responsive web application", lang: "HTML / CSS" },
+        { name: "Lelis-Realty-Real-Estate-Appraisal-Brokerage", desc: "Real estate appraisal and brokerage management portal", lang: "TypeScript" },
+        { name: "9tech", desc: "Android tech repair inventory & service tracking system", lang: "Kotlin" },
+        { name: "PABFO_MS", desc: "Provincial Agriculture and Biosystems Field Operations System", lang: "PHP" },
+        { name: "LUMINA", desc: "Mental wellness app with sentiment analysis & proverbs", lang: "Kotlin" },
+        { name: "catherines-diorama-IOT-BASED", desc: "IoT-based automated smart diorama hardware project", lang: "HTML / C++" },
+        { name: "IOT-DIORAMA-CATHERINES", desc: "IoT diorama web client control interface", lang: "JavaScript" },
+        { name: "career-paths-in-IT", desc: "IT career guidance and roadmap explorer platform", lang: "HTML" },
+        { name: "custodian-im", desc: "Property custodian inventory accountability software", lang: "PHP" },
+        { name: "MotorPool-System", desc: "University vehicle motorpool reservation & tracking system", lang: "Java" }
     ],
 
-    // Interests
-    interests: [
-        "Web Development",
-        "Software Development",
-        "API Integration",
-        "IoT Projects",
-        "Mobile Development",
-        "System Design",
-        "Open Source Contribution",
-        "Technology Innovation"
-    ],
-
-    // Social Links
-    socialMedia: {
-        instagram: "https://www.instagram.com/prnc_j1",
-        facebook: "https://www.facebook.com/ecel.tugade",
-        github: "https://github.com/VIP1019",
-        linkedin: "https://www.linkedin.com/in/princejheck-juan-27145a3a8"
-    },
-
-    // Contact Information
-    contact: {
-        email: "princejheckjuan023@gmail.com",
-        portfolio: "http://localhost:3000",
-        github: "https://github.com/VIP1019",
-        linkedin: "https://www.linkedin.com/in/princejheck-juan-27145a3a8"
-    }
+    servicesAndAvailability: [
+        "Full-Stack Web Development (Responsive web apps, APIs, modern frontends)",
+        "Blockchain & Web3 Prototyping (Stellar ecosystem, Soroban smart contracts, FinTech)",
+        "Desktop & System Software (Java multithreading, inventory systems, management portals)",
+        "IoT & Hardware Prototyping (Smart sensors, connected devices, automation)",
+        "Database Architecture & API Integration (REST APIs, MySQL, PostgreSQL, Firebase)",
+        "Available for: Internships, Contract Developer roles, Collaborative Projects, and Freelance"
+    ]
 };
 
-// Export for use in chatbot
+// Expose globally for both browser and Node environments
+if (typeof window !== 'undefined') {
+    window.portfolioKnowledge = portfolioKnowledge;
+}
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = portfolioKnowledge;
 }

@@ -167,26 +167,21 @@ if (testimonialForm) {
                 emailParams
             );
             
-            // Then save to database/JSON file
-            const response = await fetch('testimonial-handler.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(testimonialData)
-            });
+            // Show success - email sent via EmailJS
+            showSuccessModal('Thank you for your feedback! Your testimonial has been sent via email.');
+            testimonialForm.reset();
+            selectedRating = 0;
+            updateStarRating(0);
             
-            const result = await response.json();
-            
-            if (result.success) {
-                showSuccessModal('Thank you for your feedback! Your testimonial has been submitted and an email confirmation has been sent.');
-                testimonialForm.reset();
-                selectedRating = 0;
-                updateStarRating(0);
-                loadTestimonials();
-            } else {
-                showTestimonialError('testMessageError', result.message || 'Failed to submit testimonial');
-            }
+            // Try to save if PHP available (optional)
+            try {
+                await fetch('testimonial-handler.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testimonialData)
+                }).catch(() => {});
+            } catch (e) {}
+        
         } catch (error) {
             console.error('Error:', error);
             showTestimonialError('testMessageError', 'Network error. Please try again. ' + error.message);
@@ -219,50 +214,7 @@ function clearAllTestimonialErrors() {
     });
 }
 
-// Load testimonials
-async function loadTestimonials() {
-    const testimonialsList = document.getElementById('testimonialsList');
-    if (!testimonialsList) return;
-    
-    try {
-        const response = await fetch('testimonials.json');
-        const testimonials = await response.json();
-        
-        if (testimonials && testimonials.length > 0) {
-            testimonialsList.innerHTML = testimonials.map(t => `
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <i class="fas fa-user-circle"></i>
-                        <h4>${t.name}</h4>
-                    </div>
-                    <div class="testimonial-rating">
-                        ${generateStars(t.rating)}
-                    </div>
-                    <p class="testimonial-text">${t.feedback}</p>
-                    <span class="testimonial-date">${formatDate(t.timestamp)}</span>
-                </div>
-            `).join('');
-        } else {
-            testimonialsList.innerHTML = '<p class="no-testimonials">No testimonials yet. Be the first to leave feedback!</p>';
-        }
-    } catch (error) {
-        console.error('Error loading testimonials:', error);
-        testimonialsList.innerHTML = '<p class="no-testimonials">Unable to load testimonials.</p>';
-    }
-}
 
-function generateStars(rating) {
-    let stars = '';
-    for (let i = 1; i <= 5; i++) {
-        stars += '<i class="fas fa-star' + (i <= rating ? ' active' : '') + '"></i>';
-    }
-    return stars;
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
-}
 
 // Load testimonials when page loads
 if (document.getElementById('testimonialsList')) {
@@ -371,7 +323,11 @@ if (contactForm) {
     });
 }
 
-// Load Testimonials
+// Testimonials Pagination System
+let currentTestimonialPage = 0;
+let allTestimonialsData = [];
+const TESTIMONIALS_PER_PAGE = 2;
+
 async function loadTestimonials() {
     const testimonialsList = document.getElementById('testimonialsList');
     if (!testimonialsList) return;
@@ -380,34 +336,70 @@ async function loadTestimonials() {
         const response = await fetch('testimonials.json');
         const allTestimonials = await response.json();
         
-        const testimonials = allTestimonials.filter(t => t.approved === true);
+        allTestimonialsData = allTestimonials.filter(t => t.approved === true);
         
-        if (testimonials.length === 0) {
-            testimonialsList.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5);">No testimonials yet. Be the first to share your feedback!</p>';
+        if (allTestimonialsData.length === 0) {
+            testimonialsList.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5); padding: 2rem;">No testimonials yet. Be the first to share your feedback!</p>';
             return;
         }
         
-        testimonialsList.innerHTML = testimonials.map(t => `
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="testimonial-info">
-                        <h4>${escapeHtml(t.name)}</h4>
-                        <div class="testimonial-rating">
-                            ${'<i class="fas fa-star"></i>'.repeat(t.rating)}
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-message">${escapeHtml(t.feedback || t.message)}</p>
-                <span class="testimonial-date">${new Date(t.timestamp).toLocaleDateString()}</span>
-            </div>
-        `).join('');
+        renderTestimonialsPage(currentTestimonialPage);
     } catch (error) {
         console.error('Error loading testimonials:', error);
+        testimonialsList.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5); padding: 2rem;">Unable to load testimonials.</p>';
     }
 }
+
+function renderTestimonialsPage(pageIndex) {
+    const testimonialsList = document.getElementById('testimonialsList');
+    if (!testimonialsList || allTestimonialsData.length === 0) return;
+    
+    const totalPages = Math.ceil(allTestimonialsData.length / TESTIMONIALS_PER_PAGE);
+    currentTestimonialPage = Math.max(0, Math.min(pageIndex, totalPages - 1));
+    
+    const start = currentTestimonialPage * TESTIMONIALS_PER_PAGE;
+    const pageItems = allTestimonialsData.slice(start, start + TESTIMONIALS_PER_PAGE);
+    
+    const cardsHtml = pageItems.map(t => `
+        <div class="testimonial-card">
+            <div class="testimonial-header">
+                <div class="testimonial-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="testimonial-info">
+                    <h4>${escapeHtml(t.name)}</h4>
+                    <div class="testimonial-rating">
+                        ${'<i class="fas fa-star"></i>'.repeat(t.rating)}
+                    </div>
+                </div>
+            </div>
+            <p class="testimonial-message">${escapeHtml(t.feedback || t.message)}</p>
+            <span class="testimonial-date"><i class="far fa-calendar-alt"></i> ${new Date(t.timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+        </div>
+    `).join('');
+    
+    const controlsHtml = totalPages > 1 ? `
+        <div class="testimonials-controls">
+            <button type="button" class="testimonials-pagination-btn" id="testimonialPrevBtn" ${currentTestimonialPage === 0 ? 'disabled' : ''} onclick="changeTestimonialPage(${currentTestimonialPage - 1})">
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="testimonials-dots">
+                ${Array.from({ length: totalPages }).map((_, i) => `
+                    <span class="testimonials-dot ${i === currentTestimonialPage ? 'active' : ''}" onclick="changeTestimonialPage(${i})" title="Page ${i + 1}"></span>
+                `).join('')}
+            </div>
+            <button type="button" class="testimonials-pagination-btn" id="testimonialNextBtn" ${currentTestimonialPage === totalPages - 1 ? 'disabled' : ''} onclick="changeTestimonialPage(${currentTestimonialPage + 1})">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    ` : '';
+    
+    testimonialsList.innerHTML = cardsHtml + controlsHtml;
+}
+
+window.changeTestimonialPage = function(newPageIndex) {
+    renderTestimonialsPage(newPageIndex);
+};
 
 // GitHub Activity (API Integration) - Shows recent activity like GitHub
 async function loadGitHubStats() {
@@ -418,12 +410,8 @@ async function loadGitHubStats() {
     githubStats.innerHTML = '<div class="github-loading"><div class="spinner"></div></div>';
     
     try {
-        const response = await fetch('github-repos.php');
-        const repos = await response.json();
-        
-        if (repos.error) {
-            throw new Error(repos.error);
-        }
+        // Use client-side GitHub API
+        const repos = await fetchGitHubRepos();
         
         if (!repos || repos.length === 0) {
             githubStats.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">No repositories found</p>';
@@ -453,7 +441,7 @@ async function loadGitHubStats() {
             return langMap[lang] || 'language-default';
         }
         
-        githubStats.innerHTML = repos.slice(0, 6).map((repo, index) => `
+        githubStats.innerHTML = repos.map((repo, index) => `
             <a href="${repo.url}" target="_blank" class="github-repo-card" style="animation-delay: ${index * 0.1}s">
                 <div class="repo-header">
                     <i class="fas fa-folder"></i>

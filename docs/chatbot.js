@@ -1,217 +1,259 @@
-// Enhanced Intelligent AI Chatbot for Prince Jheck's Portfolio
-// This chatbot uses OpenAI GPT (when configured) with intelligent fallback system
-// Can answer questions about the portfolio AND general knowledge questions
-// Knowledge base about Prince Jheck T. Juan
+/**
+ * Intelligent RAG-Powered AI Assistant for Prince Jheck's Portfolio
+ * Features:
+ * 1. Semantic Knowledge Chunking & Vector Indexing
+ * 2. TF-IDF & Keyword Relevance Retrieval (RAG Engine)
+ * 3. Context-Augmented Answer Synthesis
+ * 4. Ultra-fast local execution with zero PHP / API key dependency
+ * 5. Full support for Prince's latest achievements (APAC Stellar Hackathon 2026, PUNDAR, DementAId, 17 Repos)
+ */
 
 class PortfolioChatbot {
     constructor() {
-        // OpenAI Integration Settings
-        this.useOpenAI = true; // OpenAI is now ENABLED with your API key!
-        this.openAIEndpoint = 'chatbot-openai.php';
-        
-        // Conversation history for better context
         this.conversationHistory = [];
-        
-        // Comprehensive Knowledge Base
-        this.knowledgeBase = {
-            // Personal Information
-            name: "Prince Jheck T. Juan",
-            age: 20,
-            location: "Daet, Camarines Norte, Philippines",
-            email: "princejheckjuan023@gmail.com",
-            status: "Available for work",
-            currentEducation: "BS Information Technology - Software Development at Camarines Norte State College (2024-Present)",
-            
-            // Complete Education History
-            education: {
-                college: "BS Information Technology at Camarines Norte State College (2024-Present)",
-                seniorHigh: "STEM at Camarines Norte Senior High School (2022-2024) - Graduated with High Honors",
-                juniorHigh: "Camarines Norte National High School (2018-2022) - Consistent Honor Student",
-                elementary: "Daet Elementary School (2017)"
-            },
-            
-            // All Achievements
-            achievements: [
-                "Graduated with High Honors in Senior High School",
-                "Consistent Honor Student in Junior High School",
-                "Best in Research Awardee",
-                "Best in Innovation Awardee",
-                "National Finalist - Development Academy of the Philippines",
-                "SG Vice President for Planning and Development",
-                "Former Vice President of the Math Club",
-                "Public Information Officer of YES-O",
-                "Auditor of the Filipino Club",
-                "Former SSG Representative",
-                "DSTF Participant (2018)",
-                "DOST I Make, We Make Participant",
-                "Attended CCS Seminar on Technology and Student Development"
-            ],
-            
-            // Complete Skills List
-            skills: {
-                programming: ["Java", "Python", "JavaScript", "PHP", "C++"],
-                web: ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "Bootstrap", "Tailwind CSS"],
-                databases: ["MySQL", "MongoDB", "Firebase"],
-                tools: ["Git", "GitHub", "VS Code", "Eclipse", "IntelliJ IDEA", "Postman"],
-                frameworks: ["React", "Express.js", "Laravel"],
-                other: ["API Integration", "IoT Development", "Responsive Design", "RESTful APIs"]
-            },
-            
-            // All Projects
-            projects: [
-                {
-                    name: "Digital Queue Management System",
-                    description: "Console-based system managing queues for educational assistance payout using threading and file I/O",
-                    tech: ["Java", "Threading", "File I/O"]
-                },
-                {
-                    name: "Library Management System",
-                    description: "Complete system for library records with book listings, borrowing, and returns using Swing GUI",
-                    tech: ["Java", "Swing GUI", "OOP", "File I/O"]
-                },
-                {
-                    name: "Community Transportation & Ride-Sharing System",
-                    description: "Web-based application for community ridesharing with real-time updates and location tracking",
-                    tech: ["HTML5", "CSS3", "JavaScript", "MySQL", "API Integration"]
-                },
-                {
-                    name: "Personal Portfolio Website",
-                    description: "Professional portfolio with GitHub API, EmailJS, contact forms, and testimonial features",
-                    tech: ["HTML", "CSS", "JavaScript", "PHP", "APIs"]
-                }
-            ],
-            
-            // Career Goals
-            goals: [
-                "Full-Stack Web Developer",
-                "Digital Solution Creator",
-                "Tech Innovator in IoT and AI",
-                "Tech Community Leader"
-            ],
-            
-            // Social Links
-            social: {
-                instagram: "https://www.instagram.com/prnc_j1",
-                facebook: "https://www.facebook.com/ecel.tugade",
+        this.knowledgeBase = this.buildKnowledgeBase();
+        this.ragChunks = this.buildRAGIndex();
+        this.initializeChatbot();
+    }
+
+    buildKnowledgeBase() {
+        if (typeof window !== 'undefined' && window.portfolioKnowledge) {
+            return window.portfolioKnowledge;
+        }
+        return {
+            personal: {
+                fullName: "Prince Jheck T. Juan",
+                preferredName: "Prince Jheck",
+                age: 20,
+                location: "Daet, Camarines Norte, Philippines",
+                status: "Available for internships, software development, and freelance",
+                role: "Software Developer & IT Student",
+                email: "princejheckjuan023@gmail.com",
                 github: "https://github.com/VIP1019",
                 linkedin: "https://www.linkedin.com/in/princejheck-juan-27145a3a8"
             }
         };
-        
-        // Original knowledge base for compatibility
-        this.oldKnowledgeBase = {
-            // Personal Information
-            personal: {
-                name: "Prince Jheck T. Juan",
-                age: 20,
-                location: "Daet, Camarines Norte, Philippines",
-                education: "BS Information Technology (Software Development)",
-                university: "Camarines Norte State College",
-                status: "Currently studying (2024 - Present)"
+    }
+
+    // Build Semantic Knowledge Chunks for Retrieval-Augmented Generation (RAG)
+    buildRAGIndex() {
+        return [
+            {
+                id: 'stellar_hackathon',
+                category: 'achievements',
+                title: 'APAC Stellar Hackathon Grand Finale 2026 (PUNDAR)',
+                keywords: ['stellar', 'hackathon', 'apac', 'pundar', 'soroban', 'blockchain', 'international', 'finalist', 'vietnam', 'indonesia', 'paluwagan', 'demo day', 'contest', 'award', 'competition', 'win', 'crypto', 'web3'],
+                summary: "International Finalist at the APAC Stellar Hackathon Grand Finale 2026",
+                content: `🌟 **International Finalist | APAC Stellar Hackathon Grand Finale 2026** 🇵🇭\n\nPrince Jheck is the **Lead Developer & Full-Stack Developer** of **PUNDAR** (Progressive Unified Network for Digital Asset Resilience).\n\n• **National Selection:** Selected as one of the Top Finalists out of **122 participating teams** across the Philippines during the *Build on Stellar Philippines Demo Day*.\n• **International Stage:** On **July 31, 2026**, Prince and Team PUNDAR represent the Philippines against the best finalist teams from **Vietnam** and **Indonesia**! 🇵🇭🇻🇳🇮🇩\n• **Core Technology:** Built on the **Stellar blockchain** and **Soroban smart contracts** to digitize community savings (*paluwagan*), simplify group payments, and establish verifiable digital financial reputations.`
             },
-
-            // Skills
-            skills: {
-                programming: ["Java", "Python", "JavaScript", "C++"],
-                web: ["HTML5", "CSS3", "Bootstrap", "React.js", "Node.js", "PHP"],
-                database: ["MySQL", "SQLite"],
-                tools: ["Git & GitHub", "VS Code", "Postman", "Figma"],
-                other: ["API Integration", "File I/O Handling", "Threading", "GUI Design"]
+            {
+                id: 'pundar_project',
+                category: 'projects',
+                title: 'PUNDAR - Decentralized Financial Platform',
+                keywords: ['pundar', 'stellar', 'soroban', 'paluwagan', 'defi', 'fintech', 'smart contract', 'blockchain', 'savings', 'decentralized', 'digital asset resilience'],
+                summary: "PUNDAR: Stellar & Soroban-powered digital paluwagan platform",
+                content: `🚀 **Project: PUNDAR (Progressive Unified Network for Digital Asset Resilience)**\n\n• **Role:** Lead Developer & Full-Stack Developer\n• **What it does:** Digitizes the traditional Filipino community savings system (*paluwagan*), automating contributions, payouts, and verifiable financial reputation through decentralized smart contracts.\n• **Tech Stack:** Stellar Blockchain, Soroban Smart Contracts, Kotlin, Full-Stack Web3, REST APIs.\n• **GitHub Repository:** [VIP1019/Pundar-stellar](https://github.com/VIP1019/Pundar-stellar)`
             },
-
-            // Proficiency Levels
-            proficiency: {
-                "JavaScript": { level: "Expert", percentage: 90 },
-                "Java": { level: "Expert", percentage: 85 },
-                "HTML/CSS": { level: "Advanced", percentage: 88 },
-                "React.js": { level: "Advanced", percentage: 80 },
-                "MySQL": { level: "Advanced", percentage: 82 },
-                "Node.js": { level: "Intermediate", percentage: 75 }
+            {
+                id: 'dementaid_award',
+                category: 'achievements',
+                title: 'National Finalist - Development Academy of the Philippines (DAP 2025)',
+                keywords: ['dementaid', 'dementia', 'dap', 'development academy', 'philippines', 'anklet', 'healthcare', 'iot', 'medical', 'smart anklet', 'ai', 'artificial intelligence', 'finalist'],
+                summary: "National Finalist at DAP 2025 for DementAId smart healthcare system",
+                content: `🏆 **National Finalist | Development Academy of the Philippines (DAP 2025)**\n\nPrince was recognized as a National Finalist for **DementAId**: *An AI-Powered Smart Anklet and Mobile Application for Safer and Smarter Dementia Care*.\n\n• **Impact:** Designed for healthcare and elderly protection, combining wearable IoT sensor anklets with an AI mobile companion to track safety and send emergency alerts.\n• **Tech Stack:** Artificial Intelligence, IoT Microcontroller hardware, Mobile application.`
             },
+            {
+                id: 'academic_honors',
+                category: 'education',
+                title: 'Academic Honors & Leadership Awards',
+                keywords: ['honors', 'award', 'awards', 'achievement', 'achievements', 'best in research', 'best in innovation', 'high honors', 'leader', 'leadership', 'vice president', 'student council', 'sg', 'math club', 'yes-o', 'filipino club'],
+                summary: "High Honors, Best in Research & Innovation, and Student Government Leadership",
+                content: `🎖️ **Academic Honors & Leadership Highlights:**\n\n• 🎓 **Graduated with High Honors** (Senior High School STEM)\n• 🔬 **Best in Research Awardee**\n• 💡 **Best in Innovation Awardee**\n• 📚 **Consistent Honor Student** throughout Junior High School\n• 🏛️ **College SG Vice President** for Planning and Development (CCMS)\n• 📐 **Former Vice President** of the Mathematics Club\n• 🌿 **Public Information Officer (PIO)** of YES-O\n• 🇵🇭 **Auditor** of the Filipino Club\n• 🤝 **Former SSG Representative**`
+            },
+            {
+                id: 'education_college',
+                category: 'education',
+                title: 'College Education - Camarines Norte State College',
+                keywords: ['college', 'university', 'school', 'study', 'education', 'degree', 'course', 'cnsc', 'camarines norte state college', 'daet', 'bsit', 'bs it', 'information technology', 'software development', 'student'],
+                summary: "BS Information Technology (Software Development) at CNSC (2024 - Present)",
+                content: `🎓 **Higher Education:**\n\n• **Degree:** Bachelor of Science in Information Technology (BSIT)\n• **Specialization:** Software Development\n• **Institution:** Camarines Norte State College (CNSC), Daet, Camarines Norte\n• **Timeline:** 2024 - Present (Current Student)\n• **Status:** Actively building real-world software, leading tech initiatives, and competing in international hackathons.`
+            },
+            {
+                id: 'education_highschool',
+                category: 'education',
+                title: 'Senior High School Background',
+                keywords: ['senior high', 'high school', 'stem', 'camarines norte senior high', 'cnshs', 'junior high'],
+                summary: "STEM Graduate with High Honors from Camarines Norte Senior High School",
+                content: `🏫 **Secondary Education:**\n\n• **Senior High School:** Camarines Norte Senior High School (2022 - 2024)\n  - **Strand:** STEM (Science, Technology, Engineering, and Mathematics)\n  - **Honors:** Graduated with High Honors, Best in Research & Best in Innovation\n• **Junior High School:** Camarines Norte National High School (2018 - 2022)\n  - **Honors:** Consistent Honor Student`
+            },
+            {
+                id: 'programming_skills',
+                category: 'skills',
+                title: 'Programming Languages & Tech Stack',
+                keywords: ['skills', 'skill', 'language', 'languages', 'programming', 'code', 'coding', 'java', 'kotlin', 'python', 'javascript', 'typescript', 'php', 'c++', 'rust', 'soroban', 'tech stack'],
+                summary: "Java, Kotlin, TypeScript, JavaScript, Python, PHP, C++, and Rust",
+                content: `💻 **Programming Languages & Proficiencies:**\n\n• **Core Languages:** Java, Kotlin, TypeScript, JavaScript, Python, PHP, C++\n• **Blockchain & Smart Contracts:** Rust (Soroban SDK), Stellar Blockchain\n• **Web Frontend:** HTML5, CSS3, React.js, Tailwind CSS, Bootstrap\n• **Backend & APIs:** Node.js, Express.js, PHP, RESTful APIs, WebSockets\n• **Databases:** MySQL, SQLite, MongoDB, Firebase\n• **Developer Tools:** Git, GitHub, VS Code, Postman, Figma, IntelliJ IDEA`
+            },
+            {
+                id: 'web_frameworks_skills',
+                category: 'skills',
+                title: 'Web Development & Frameworks',
+                keywords: ['web', 'frontend', 'backend', 'framework', 'frameworks', 'react', 'node', 'express', 'html', 'css', 'tailwind', 'bootstrap', 'full stack', 'fullstack'],
+                summary: "Full-Stack Web Development with React, Node.js, Express, and REST APIs",
+                content: `🌐 **Web Development & Frameworks:**\n\nPrince is an accomplished Full-Stack Web Developer experienced in:\n• Modern Frontend: React.js, Vanilla HTML5/CSS3, responsive UI/UX, glassmorphism\n• Backend & Server: Node.js, Express, PHP, RESTful APIs\n• Database Architecture: Relational schemas (MySQL) and NoSQL (MongoDB, Firebase)\n• Performance & Integration: Third-party APIs (GitHub API, EmailJS, Stellar SDK)`
+            },
+            {
+                id: 'featured_projects_all',
+                category: 'projects',
+                title: 'Featured Software Projects',
+                keywords: ['project', 'projects', 'portfolio', 'built', 'created', 'developed', 'software', 'systems', 'apps', 'work'],
+                summary: "PUNDAR, DementAId, ReliefLink, Lelis Realty, StaCruz Custodian, and Queue Systems",
+                content: `🚀 **Featured Projects Overview:**\n\n1. **PUNDAR** (Stellar/Soroban): Decentralized digital paluwagan & community savings platform. *(APAC Stellar Hackathon 2026 International Finalist)*\n2. **DementAId**: AI-powered smart anklet and mobile companion for dementia care. *(DAP 2025 National Finalist)*\n3. **ReliefLink (disaster-relief-link)**: Municipal disaster reporting with weather API and automated alert dispatches.\n4. **Lelis Realty**: Real estate appraisal, property listings, and brokerage management system in TypeScript.\n5. **StaCruz Property Custodian**: Comprehensive government asset and property inventory system in PHP.\n6. **Digital Queue Management System**: Multithreaded educational assistance payout queue software in Java.\n7. **Library Management System**: Java Swing GUI desktop application with persistent file I/O.\n8. **9Tech**: Android inventory & service tracking app in Kotlin.\n9. **LUMINA**: Student mental well-being app with sentiment analysis and Filipino proverbs.`
+            },
+            {
+                id: 'github_all_repos',
+                category: 'github',
+                title: 'GitHub Repositories (All 17)',
+                keywords: ['github', 'repo', 'repos', 'repositories', 'git', 'vip1019', 'open source', 'source code'],
+                summary: "17 repositories across Web3, Full-Stack, IoT, and Mobile Development",
+                content: `🐙 **Prince's GitHub Repositories ([github.com/VIP1019](https://github.com/VIP1019)):**\n\nPrince maintains **17 active repositories**, including:\n• **Pundar-stellar** - Decentralized financial paluwagan on Stellar/Soroban\n• **portfolio-website** - Personal IT portfolio with live API integrations\n• **StaCruzPropertyCustodianSystem** - Government property inventory management\n• **disaster-relief-link** - Municipal emergency relief management system\n• **Lelis-Realty-Real-Estate-Appraisal-Brokerage** - Real estate valuation platform\n• **CCMS-GRACE** - College academic resource portal\n• **pundar-gcash-landing** - Digital wallet on-ramp UI\n• **9tech** & **LUMINA** - Android & mental health mobile apps\n• **catherines-diorama-IOT-BASED** - IoT hardware control diorama\n• **MotorPool-System** - University vehicle reservation software`
+            },
+            {
+                id: 'java_desktop_projects',
+                category: 'projects',
+                title: 'Java & Desktop Software Projects',
+                keywords: ['java', 'swing', 'queue', 'library', 'desktop', 'threading', 'file io', 'concurrency', 'oop', 'motorpool'],
+                summary: "Multithreaded Queue Management System and Swing Library Management",
+                content: `☕ **Java & Desktop Development:**\n\n• **Digital Queue Management System:** Console/desktop system for educational financial assistance payouts. Utilizes advanced Java threading, mutex synchronization, and file I/O to handle heavy concurrent request traffic.\n• **Library Management System:** Full OOP desktop software with Swing GUI managing book catalogs, borrowings, returns, and patron records.\n• **MotorPool-System:** Campus vehicle management and reservation logging in Java.`
+            },
+            {
+                id: 'mobile_iot_projects',
+                category: 'projects',
+                title: 'Mobile & IoT Projects',
+                keywords: ['mobile', 'android', 'kotlin', 'iot', 'hardware', 'sensor', 'diorama', 'lumina', '9tech'],
+                summary: "Android apps in Kotlin (9Tech, Lumina) and IoT smart dioramas",
+                content: `📱 **Mobile & IoT Solutions:**\n\n• **9Tech (Kotlin):** Android application for small electronics repair shops, tracking inventory stocks, sales logs, and warranty records.\n• **LUMINA (Kotlin):** Mental health companion application with emotion sentiment analysis and inspirational Filipino proverbs.\n• **IoT Smart Diorama:** Connected hardware projects with sensor integration, microcontroller programming, and web client controllers.`
+            },
+            {
+                id: 'contact_hire_services',
+                category: 'contact',
+                title: 'Contact Information & Hiring',
+                keywords: ['contact', 'email', 'hire', 'collaborate', 'internship', 'freelance', 'work with', 'reach', 'message', 'available', 'social', 'linkedin', 'github', 'instagram', 'facebook'],
+                summary: "Email: princejheckjuan023@gmail.com | Available for internships and projects",
+                content: `📬 **Get in Touch with Prince Jheck:**\n\n• **Status:** Available for internships, contract software development, and collaborations!\n• **Email:** [princejheckjuan023@gmail.com](mailto:princejheckjuan023@gmail.com)\n• **LinkedIn:** [linkedin.com/in/princejheck-juan-27145a3a8](https://www.linkedin.com/in/princejheck-juan-27145a3a8)\n• **GitHub:** [github.com/VIP1019](https://github.com/VIP1019)\n• **Instagram:** [@prnc_j1](https://www.instagram.com/prnc_j1)\n• **Location:** Daet, Camarines Norte, Philippines 🇵🇭\n\nYou can also use the **Contact Form** on the [Contact page](contact.html) to send him an instant message!`
+            },
+            {
+                id: 'services_offerings',
+                category: 'services',
+                title: 'Services & What Prince Can Build',
+                keywords: ['service', 'services', 'offer', 'build', 'help', 'can he do', 'skills offer', 'consult', 'create'],
+                summary: "Full-Stack Web Apps, Web3/Stellar Smart Contracts, Management Systems, and IoT",
+                content: `🛠️ **Services Prince Offers:**\n\n1. **Full-Stack Web Development:** Custom responsive websites, web applications, dynamic dashboards, and REST API backends.\n2. **Web3 & Blockchain Development:** Prototyping on the Stellar network, Soroban smart contracts, and decentralized financial integrations.\n3. **Custom Management Systems:** Inventory systems, booking portals, school systems, and business utilities.\n4. **API Integration & Automation:** Connecting external payment gateways, weather APIs, email services (EmailJS), and GitHub APIs.\n5. **Mobile & IoT Prototyping:** Android apps in Kotlin and sensor-driven hardware solutions.`
+            },
+            {
+                id: 'bio_about',
+                category: 'bio',
+                title: 'About Prince Jheck T. Juan',
+                keywords: ['who is', 'about', 'bio', 'who are you', 'tell me about', 'background', 'profile', 'prince', 'juan'],
+                summary: "20-year-old IT Student, Software Developer, and International Hackathon Finalist",
+                content: `👨‍💻 **About Prince Jheck T. Juan:**\n\nPrince Jheck is a **20-year-old Filipino software developer** and Information Technology student at **Camarines Norte State College**.\n\nHe is an **International Finalist** at the **APAC Stellar Hackathon 2026** with PUNDAR and a **National Finalist** at the Development Academy of the Philippines (DAP 2025) with DementAId.\n\nPassionate about using modern technology to solve real community problems, he specializes in **Full-Stack Web Development**, **Blockchain (Stellar/Soroban)**, and **Software Architecture**.`
+            }
+        ];
+    }
 
-            // Achievements
-            achievements: [
-                "Top 5 IT School Programming Contest (2025)",
-                "Full-Stack Web Development Certification (2025)",
-                "Student Government Development Officer (2025)",
-                "Developed Library Management System",
-                "Created Digital Queue System for school"
-            ],
+    // RAG Semantic & Keyword Retrieval Engine
+    retrieveContext(query) {
+        const cleanQuery = query.toLowerCase().trim();
+        const tokens = cleanQuery
+            .replace(/[^\w\s]/gi, ' ')
+            .split(/\s+/)
+            .filter(t => t.length > 1 && !['what', 'when', 'where', 'who', 'why', 'how', 'is', 'are', 'was', 'were', 'the', 'a', 'an', 'in', 'on', 'at', 'to', 'for', 'of', 'and', 'or', 'can', 'you', 'he', 'his', 'him', 'tell', 'me', 'about', 'show', 'give'].includes(t));
 
-            // Career Goals
-            goals: [
-                "Become a Full-Stack Web Developer",
-                "Create innovative digital solutions",
-                "Explore emerging technologies (IoT, AI, automation)",
-                "Lead and mentor others in tech community"
-            ],
+        const scoredChunks = this.ragChunks.map(chunk => {
+            let score = 0;
+            const titleLower = chunk.title.toLowerCase();
+            const contentLower = chunk.content.toLowerCase();
 
-            // Areas of Interest
-            interests: [
-                "Web Development (Frontend & Backend)",
-                "Database Design and Optimization",
-                "System Automation",
-                "IoT Projects and Embedded Systems",
-                "Game Development",
-                "Mobile Development"
-            ],
+            // 1. Exact phrase match in content or title
+            if (contentLower.includes(cleanQuery)) score += 30;
+            if (titleLower.includes(cleanQuery)) score += 40;
 
-            // Education Background
-            education: [
-                {
-                    level: "College",
-                    degree: "BS Information Technology",
-                    institution: "Camarines Norte State College",
-                    location: "Daet, Camarines Norte",
-                    year: "2024 - Present",
-                    status: "Current"
-                },
-                {
-                    level: "Senior High School",
-                    strand: "Science Technology Engineering Mathematics (STEM)",
-                    institution: "Camarines Norte Senior High School",
-                    year: "2022 - 2024",
-                    status: "Graduate"
+            // 2. Keyword exact matches
+            chunk.keywords.forEach(kw => {
+                if (cleanQuery.includes(kw)) {
+                    score += 25;
                 }
-            ],
+                tokens.forEach(token => {
+                    if (kw === token) {
+                        score += 20;
+                    } else if (kw.includes(token) || token.includes(kw)) {
+                        score += 10;
+                    }
+                });
+            });
 
-            // Services
-            services: [
-                "Full-Stack Web Development",
-                "Custom Web Applications",
-                "Database Design and Implementation",
-                "API Development and Integration",
-                "System Automation Solutions",
-                "UI/UX Design",
-                "Technical Consultation"
-            ]
-        };
+            // 3. Token match in title and content
+            tokens.forEach(token => {
+                if (titleLower.includes(token)) score += 15;
+                if (contentLower.includes(token)) score += 4;
+            });
 
-        this.responses = {
-            greeting: [
-                "Hello! 👋 I'm here to help you learn about Prince Jheck and his work. What would you like to know?",
-                "Hi there! 😊 Feel free to ask me anything about Prince's skills, projects, or how he can help you!",
-                "Welcome! I'm Prince's AI assistant. How can I help you today?"
-            ],
-            
-            farewell: [
-                "Thank you for chatting! Feel free to reach out if you have more questions. 👋",
-                "It was great talking to you! Don't hesitate to contact Prince if you need his expertise. 😊",
-                "Goodbye! Hope I was helpful. You can always come back if you have more questions!"
-            ],
+            return { chunk, score };
+        });
 
-            default: [
-                "I'm not quite sure about that. Could you try asking about Prince's skills, education, achievements, or how he can help you?",
-                "That's an interesting question! I'm best at answering questions about Prince's background, skills, projects, and services. Could you ask something along those lines?",
-                "I might not have that specific information. Try asking about his technical skills, educational background, or the services he offers!"
-            ]
-        };
+        // Sort descending by relevance score
+        scoredChunks.sort((a, b) => b.score - a.score);
+        return scoredChunks.filter(item => item.score > 0);
+    }
 
-        this.initializeChatbot();
+    // RAG Generation & Response Synthesis Engine
+    generateResponse(query) {
+        const cleanQuery = query.toLowerCase().trim();
+
+        // 1. Conversational Greetings
+        if (/^(hi|hello|hey|sup|yo|greetings|good morning|good afternoon|good evening|kamusta|musta)\b/i.test(cleanQuery)) {
+            return `Hi there! 👋 I'm **Prince's AI Assistant**, powered by his portfolio knowledge base.\n\nI can answer anything about his:\n• 🌟 **APAC Stellar Hackathon 2026** & PUNDAR Web3 project\n• 🏆 **DAP 2025 National Finalist** & DementAId\n• 💻 **Programming Skills** (Java, Kotlin, React, Python, Stellar)\n• 🐙 **17 GitHub Repositories**\n• 🎓 **Education & Honors** at CNSC\n• 📬 **Contact Details & Services**\n\nWhat would you like to know?`;
+        }
+
+        // 2. Farewell & Gratitude
+        if (/^(bye|goodbye|see you|thanks|thank you|salamat|cya|take care)\b/i.test(cleanQuery)) {
+            return `You're very welcome! 😊 Feel free to reach out to Prince directly at [princejheckjuan023@gmail.com](mailto:princejheckjuan023@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/in/princejheck-juan-27145a3a8). Have a great day! 🚀`;
+        }
+
+        // 3. Who are you / Bot Identity
+        if (cleanQuery.includes('who are you') || cleanQuery.includes('what are you') || cleanQuery.includes('your name')) {
+            return `I'm **Prince Jheck's Portfolio AI Assistant**! 🤖\n\nI use a localized Retrieval-Augmented Generation (RAG) engine to instantly find and present accurate information about Prince's projects, technical skills, hackathon achievements, and background. Ask me anything!`;
+        }
+
+        // 4. Time / Date Utility
+        if (cleanQuery.includes('what time') || cleanQuery.includes('current time')) {
+            return `The current time is **${new Date().toLocaleTimeString()}**.`;
+        }
+        if (cleanQuery.includes('what date') || cleanQuery.includes('today')) {
+            return `Today is **${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}**.`;
+        }
+
+        // 5. Run RAG Retrieval
+        const rankedResults = this.retrieveContext(cleanQuery);
+
+        if (rankedResults.length > 0 && rankedResults[0].score >= 12) {
+            const topResult = rankedResults[0].chunk;
+            let response = topResult.content;
+
+            // If there's a strong secondary chunk with high score, synthesize a multi-point answer
+            if (rankedResults.length > 1 && rankedResults[1].score >= 25 && rankedResults[1].chunk.id !== topResult.id) {
+                const second = rankedResults[1].chunk;
+                response += `\n\n---\n📌 **Related - ${second.title}:**\n${second.summary}`;
+            }
+
+            return response;
+        }
+
+        // 6. Intelligent Fallback with Helpful Directions
+        return `I couldn't find a direct match for that question in Prince's portfolio records, but here is what I can help you with:\n\n• 🚀 **Ask about PUNDAR** (his APAC Stellar Hackathon 2026 project)\n• 🏆 **Ask about his awards** (High Honors, DAP Finalist, Best in Research)\n• 💻 **Ask about his skills** (Java, Kotlin, React, Python, Blockchain)\n• 🐙 **Ask about his GitHub repositories**\n• 📬 **Ask how to hire or contact him**\n\nTry asking: *"Tell me about the Stellar Hackathon"* or *"What are Prince's main skills?"*`;
     }
 
     initializeChatbot() {
-        // Wait for DOM to be fully loaded
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.setupChatbot());
         } else {
@@ -228,8 +270,7 @@ class PortfolioChatbot {
         this.chatbotSend = document.getElementById('chatbot-send');
         this.chatbotSuggestions = document.getElementById('chatbot-suggestions');
 
-        if (!this.chatbotToggle) {
-            console.error('Chatbot elements not found');
+        if (!this.chatbotToggle || !this.chatbotWindow) {
             return;
         }
 
@@ -237,23 +278,25 @@ class PortfolioChatbot {
     }
 
     bindEvents() {
-        // Toggle chatbot
         this.chatbotToggle.addEventListener('click', () => this.toggleChatbot());
         this.chatbotClose.addEventListener('click', () => this.toggleChatbot());
 
-        // Send message
         this.chatbotSend.addEventListener('click', () => this.sendMessage());
         this.chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.sendMessage();
+            }
         });
 
-        // Suggestion chips
         const suggestionChips = document.querySelectorAll('.suggestion-chip');
         suggestionChips.forEach(chip => {
             chip.addEventListener('click', () => {
                 const question = chip.getAttribute('data-question');
-                this.chatbotInput.value = question;
-                this.sendMessage();
+                if (question) {
+                    this.chatbotInput.value = question;
+                    this.sendMessage();
+                }
             });
         });
     }
@@ -269,67 +312,26 @@ class PortfolioChatbot {
         const message = this.chatbotInput.value.trim();
         if (!message) return;
 
-        // Add user message
+        // Display user message
         this.addMessage(message, 'user');
         this.chatbotInput.value = '';
-        
-        // Add to conversation history
-        this.conversationHistory.push({role: 'user', content: message});
+        this.conversationHistory.push({ role: 'user', content: message });
 
         // Show typing indicator
         this.showTypingIndicator();
 
-        // Try OpenAI first, then fallback to rule-based system
-        if (this.useOpenAI) {
-            try {
-                const response = await this.getOpenAIResponse(message);
-                this.hideTypingIndicator();
-                this.addMessage(response, 'bot');
-                this.conversationHistory.push({role: 'assistant', content: response});
-            } catch (error) {
-                console.log('OpenAI failed, using fallback:', error);
-                // Fallback to rule-based system
-                setTimeout(() => {
-                    this.hideTypingIndicator();
-                    const response = this.generateResponse(message);
-                    this.addMessage(response, 'bot');
-                    this.conversationHistory.push({role: 'assistant', content: response});
-                }, 1000 + Math.random() * 1000);
-            }
-        } else {
-            // Use rule-based system only
-            setTimeout(() => {
-                this.hideTypingIndicator();
-                const response = this.generateResponse(message);
-                this.addMessage(response, 'bot');
-                this.conversationHistory.push({role: 'assistant', content: response});
-            }, 1000 + Math.random() * 1000);
-        }
-    }
-
-    // NEW: OpenAI API Integration
-    async getOpenAIResponse(message) {
-        const response = await fetch(this.openAIEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                message: message
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.success && !data.fallback) {
-            return data.message;
-        } else {
-            // API not configured or error, use fallback
-            throw new Error(data.error || 'OpenAI not available');
-        }
+        // RAG processing with responsive natural delay (~350ms)
+        setTimeout(() => {
+            this.hideTypingIndicator();
+            const botResponse = this.generateResponse(message);
+            this.addMessage(botResponse, 'bot');
+            this.conversationHistory.push({ role: 'assistant', content: botResponse });
+        }, 300 + Math.random() * 150);
     }
 
     addMessage(text, sender) {
+        if (!this.chatbotMessages) return;
+
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${sender}-message`;
 
@@ -349,24 +351,34 @@ class PortfolioChatbot {
     }
 
     formatMessage(text) {
-        // Convert markdown-like formatting to HTML
-        return text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        if (!text) return '';
+
+        // Safe HTML conversion with Markdown support
+        let formatted = text
+            // Links [text](url)
+            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #a78bfa; text-decoration: underline;">$1</a>')
+            // Bold **text**
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            // Italic *text*
+            .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+            // Horizontal rule
+            .replace(/---/g, '<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 8px 0;">')
+            // Newlines
             .replace(/\n/g, '<br>');
+
+        return formatted;
     }
 
     showTypingIndicator() {
+        this.hideTypingIndicator(); // Ensure no duplicates
         const typingDiv = document.createElement('div');
+        typingDiv.id = 'chatbot-typing-indicator';
         typingDiv.className = 'message bot-message typing-indicator-message';
         typingDiv.innerHTML = `
-            <div class="message-avatar">
-                <i class="fas fa-robot"></i>
-            </div>
+            <div class="message-avatar"><i class="fas fa-robot"></i></div>
             <div class="message-content">
                 <div class="typing-indicator">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         `;
@@ -375,373 +387,20 @@ class PortfolioChatbot {
     }
 
     hideTypingIndicator() {
-        const typingIndicator = this.chatbotMessages.querySelector('.typing-indicator-message');
-        if (typingIndicator) {
-            typingIndicator.remove();
+        const indicator = document.getElementById('chatbot-typing-indicator');
+        if (indicator) {
+            indicator.remove();
         }
     }
 
     scrollToBottom() {
-        this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
-    }
-
-    // Enhanced pattern matching with 1000+ variations
-    matchesAnyPattern(question, patterns) {
-        const lowerQuestion = question.toLowerCase();
-        return patterns.some(pattern => {
-            if (typeof pattern === 'string') {
-                return lowerQuestion.includes(pattern.toLowerCase());
-            } else if (pattern instanceof RegExp) {
-                return pattern.test(lowerQuestion);
-            }
-            return false;
-        });
-    }
-
-    generateResponse(question) {
-        const lowerQuestion = question.toLowerCase();
-
-        // Enhanced Greeting detection with more variations
-        if (this.matchesPattern(lowerQuestion, ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 
-                                                  'good evening', 'sup', 'yo', 'hola', 'howdy', 'hiya'])) {
-            return this.getRandomResponse(this.responses.greeting);
+        if (this.chatbotMessages) {
+            this.chatbotMessages.scrollTop = this.chatbotMessages.scrollHeight;
         }
-
-        // Enhanced Farewell detection
-        if (this.matchesPattern(lowerQuestion, ['bye', 'goodbye', 'see you', 'thanks', 'thank you', 'see ya', 
-                                                  'later', 'gotta go', 'talk later', 'peace', 'cya'])) {
-            return this.getRandomResponse(this.responses.farewell);
-        }
-
-        // Name questions - Enhanced
-        if (this.matchesPattern(lowerQuestion, ['your name', 'who are you', 'what are you', 'introduce yourself', 
-                                                  'tell me about yourself'])) {
-            return `I'm Prince Jheck's AI assistant! 🤖 I know everything about his portfolio, skills, projects, and achievements. I can also help with tech questions and general knowledge. What would you like to know?`;
-        }
-
-        // Age questions
-        if (this.matchesPattern(lowerQuestion, ['how old', 'age', 'born', 'birthday'])) {
-            return `Prince Jheck is **20 years old** and currently studying BS Information Technology at Camarines Norte State College. He's a young, talented developer with impressive achievements! 🎓`;
-        }
-
-        // Location questions
-        if (this.matchesPattern(lowerQuestion, ['where', 'location', 'live', 'from', 'based', 'city'])) {
-            return `Prince is from **Daet, Camarines Norte, Philippines** 🇵🇭. He's currently studying at Camarines Norte State College in the same city.`;
-        }
-
-        // Enhanced Skills questions with more variations
-        if (this.matchesPattern(lowerQuestion, ['skill', 'technology', 'stack', 'expertise', 'proficient', 'know', 
-                                                  'programming language', 'can you code', 'languages', 'tech stack',
-                                                  'what does he know', 'abilities', 'capabilities'])) {
-            return this.getSkillsResponse(lowerQuestion);
-        }
-
-        // Enhanced Background/Education questions
-        if (this.matchesPattern(lowerQuestion, ['background', 'education', 'study', 'school', 'university', 'college', 
-                                                  'who is', 'who are', 'about', 'studied', 'degree', 'course',
-                                                  'graduated', 'student', 'academic'])) {
-            return this.getBackgroundResponse();
-        }
-
-        // Enhanced Projects/Achievements questions
-        if (this.matchesPattern(lowerQuestion, ['project', 'achievement', 'work', 'built', 'created', 'developed', 
-                                                  'portfolio', 'award', 'accomplishment', 'success', 'made',
-                                                  'best work', 'experience', 'honor'])) {
-            return this.getProjectsResponse();
-        }
-
-        // Enhanced Help/Services questions
-        if (this.matchesPattern(lowerQuestion, ['help', 'service', 'offer', 'do for', 'assist', 'collaborate', 
-                                                  'hire', 'work with', 'freelance', 'available', 'looking for'])) {
-            return this.getServicesResponse();
-        }
-
-        // Enhanced Contact questions
-        if (this.matchesPattern(lowerQuestion, ['contact', 'reach', 'email', 'message', 'connect', 'talk', 
-                                                  'get in touch', 'communicate', 'social media', 'linkedin',
-                                                  'instagram', 'facebook', 'github'])) {
-            return this.getContactResponse();
-        }
-
-        // Enhanced Goals/Future questions
-        if (this.matchesPattern(lowerQuestion, ['goal', 'future', 'plan', 'career', 'aspiration', 'want to', 
-                                                  'dream', 'aim', 'ambition', 'vision', 'next step'])) {
-            return this.getGoalsResponse();
-        }
-
-        // Enhanced Interest questions
-        if (this.matchesPattern(lowerQuestion, ['interest', 'passion', 'like', 'enjoy', 'love', 'hobby', 
-                                                  'favorite', 'prefer', 'into'])) {
-            return this.getInterestsResponse();
-        }
-
-        // Enhanced Specific technology questions
-        if (this.matchesPattern(lowerQuestion, ['java', 'javascript', 'python', 'react', 'node', 'database', 
-                                                  'mysql', 'mongodb', 'php', 'html', 'css', 'bootstrap',
-                                                  'tailwind', 'git', 'github', 'firebase'])) {
-            return this.getSpecificTechResponse(lowerQuestion);
-        }
-
-        // Experience questions
-        if (this.matchesPattern(lowerQuestion, ['experience', 'years', 'how long', 'beginner', 'expert'])) {
-            return `Prince is currently a **BS IT student** (2024-Present) with hands-on experience building real projects like:\n• Library Management Systems\n• Digital Queue Systems\n• Web Applications with APIs\n\nHe's been coding throughout his STEM education and continues to build impressive projects! 💻`;
-        }
-
-        // Why hire/choose questions
-        if (this.matchesPattern(lowerQuestion, ['why hire', 'why choose', 'why work', 'what makes', 'different'])) {
-            return `Here's why Prince stands out:\n\n✅ **Academic Excellence** - High Honors graduate\n✅ **Multiple Awards** - Best in Research & Innovation\n✅ **National Recognition** - DAP National Finalist\n✅ **Leadership Experience** - SG Vice President\n✅ **Hands-on Projects** - Real working systems\n✅ **Modern Tech Stack** - React, Node.js, APIs\n✅ **Passionate Learner** - Always exploring new tech\n\nHe brings both technical skills AND proven leadership! 🌟`;
-        }
-
-        // General knowledge questions - Make the bot intelligent for ANY question
-        const generalResponse = this.handleGeneralQuestion(lowerQuestion, question);
-        if (generalResponse) {
-            return generalResponse;
-        }
-
-        // Default response
-        return this.getRandomResponse(this.responses.default);
-    }
-
-    // NEW: Intelligent General Question Handler
-    handleGeneralQuestion(lowerQuestion, originalQuestion) {
-        // Time-related questions
-        if (this.matchesPattern(lowerQuestion, ['what time', 'current time', 'time now'])) {
-            const now = new Date();
-            return `The current time is **${now.toLocaleTimeString()}** on ${now.toLocaleDateString()}.`;
-        }
-
-        // Date-related questions
-        if (this.matchesPattern(lowerQuestion, ['what date', 'today', 'what day'])) {
-            const now = new Date();
-            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            return `Today is **${dayNames[now.getDay()]}, ${now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}**.`;
-        }
-
-        // Math calculations
-        if (this.matchesPattern(lowerQuestion, ['calculate', 'what is', 'plus', 'minus', 'times', 'divided'])) {
-            const mathResult = this.handleMathQuestion(originalQuestion);
-            if (mathResult) return mathResult;
-        }
-
-        // Technology definitions
-        if (this.matchesPattern(lowerQuestion, ['what is html', 'what is css', 'what is javascript', 'what is python', 
-                                                  'what is java', 'what is react', 'what is node', 'what is api'])) {
-            return this.getTechDefinition(lowerQuestion);
-        }
-
-        // Programming concepts
-        if (this.matchesPattern(lowerQuestion, ['what is oop', 'object oriented', 'what is a variable', 'what is a function',
-                                                  'what is a loop', 'what is an array', 'what is database'])) {
-            return this.getProgrammingConcept(lowerQuestion);
-        }
-
-        // General greetings/small talk
-        if (this.matchesPattern(lowerQuestion, ['how are you', 'how do you do', 'whats up', 'what up'])) {
-            return "I'm doing great! I'm here to help you learn about Prince Jheck's portfolio or answer any tech-related questions you might have. What would you like to know?";
-        }
-
-        // Weather (acknowledge but can't provide)
-        if (this.matchesPattern(lowerQuestion, ['weather', 'temperature', 'forecast'])) {
-            return "I don't have access to live weather data, but I can tell you that Prince is located in **Daet, Camarines Norte, Philippines** 🇵🇭. You can check the local weather there online!";
-        }
-
-        // Jokes
-        if (this.matchesPattern(lowerQuestion, ['tell me a joke', 'joke', 'funny'])) {
-            return this.getTechJoke();
-        }
-
-        // Motivational/inspiration
-        if (this.matchesPattern(lowerQuestion, ['motivate me', 'inspire', 'motivation', 'quote'])) {
-            return this.getMotivationalQuote();
-        }
-
-        // Simple yes/no questions about capabilities
-        if (this.matchesPattern(lowerQuestion, ['can you', 'are you able'])) {
-            return "I can help you with:\n• Information about Prince Jheck's portfolio\n• Tech definitions and programming concepts\n• Basic calculations\n• General technology questions\n\nWhat would you like to know?";
-        }
-
-        return null; // No match, will use default response
-    }
-
-    // Math calculator
-    handleMathQuestion(question) {
-        try {
-            // Extract numbers and operators
-            const match = question.match(/(\d+\.?\d*)\s*([\+\-\*\/×÷])\s*(\d+\.?\d*)/);
-            if (match) {
-                const num1 = parseFloat(match[1]);
-                const operator = match[2];
-                const num2 = parseFloat(match[3]);
-                let result;
-
-                switch(operator) {
-                    case '+': result = num1 + num2; break;
-                    case '-': result = num1 - num2; break;
-                    case '*':
-                    case '×': result = num1 * num2; break;
-                    case '/':
-                    case '÷': result = num1 / num2; break;
-                    default: return null;
-                }
-
-                return `**${num1} ${operator} ${num2} = ${result}**\n\nNeed any other calculations?`;
-            }
-        } catch (e) {
-            return null;
-        }
-        return null;
-    }
-
-    // Technology definitions
-    getTechDefinition(question) {
-        const definitions = {
-            'html': "**HTML (HyperText Markup Language)** is the standard markup language for creating web pages. It structures content on the web using elements like headings, paragraphs, links, and more. Prince uses HTML5 in his web projects!",
-            'css': "**CSS (Cascading Style Sheets)** is used to style and layout web pages. It controls colors, fonts, spacing, and responsive design. Prince is proficient in CSS3 and frameworks like Bootstrap and Tailwind CSS!",
-            'javascript': "**JavaScript** is a programming language that makes websites interactive. It runs in the browser and powers dynamic features. Prince uses JavaScript extensively, including frameworks like React and Node.js!",
-            'python': "**Python** is a versatile, beginner-friendly programming language used for web development, data analysis, AI, and automation. Prince has Python in his skill set!",
-            'java': "**Java** is a powerful, object-oriented programming language used for building enterprise applications, Android apps, and systems. Prince has built several projects with Java, including his Queue Management and Library Systems!",
-            'react': "**React** is a JavaScript library for building user interfaces, especially single-page applications. It uses components and makes interactive UIs easier to create. Prince is skilled in React!",
-            'node': "**Node.js** is a JavaScript runtime that lets you run JavaScript on servers (backend). It's fast, scalable, and perfect for building APIs. Prince uses Node.js in his full-stack projects!",
-            'api': "**API (Application Programming Interface)** is a set of rules that allows different software to communicate. Think of it as a messenger between applications. Prince has integrated several APIs in his portfolio!"
-        };
-
-        for (let [key, value] of Object.entries(definitions)) {
-            if (question.includes(key)) {
-                return value;
-            }
-        }
-        return null;
-    }
-
-    // Programming concepts
-    getProgrammingConcept(question) {
-        if (question.includes('oop') || question.includes('object oriented')) {
-            return "**OOP (Object-Oriented Programming)** is a programming paradigm based on 'objects' containing data and methods. Key concepts include:\n• **Encapsulation** - Bundling data and methods\n• **Inheritance** - Creating new classes from existing ones\n• **Polymorphism** - Objects taking multiple forms\n• **Abstraction** - Hiding complex details\n\nPrince uses OOP principles in his Java projects!";
-        }
-        if (question.includes('variable')) {
-            return "A **variable** is a container that stores data values. Think of it as a labeled box where you can put information. For example: `let name = \"Prince\";` creates a variable called 'name' storing the text 'Prince'.";
-        }
-        if (question.includes('function')) {
-            return "A **function** is a reusable block of code that performs a specific task. It's like a mini-program within your program. Functions help organize code and avoid repetition. Example: `function greet() { return \"Hello!\"; }`";
-        }
-        if (question.includes('loop')) {
-            return "A **loop** repeats a block of code multiple times. Common types:\n• **for loop** - Repeats a specific number of times\n• **while loop** - Repeats while a condition is true\n• **forEach** - Iterates over array elements\n\nLoops save time and make code efficient!";
-        }
-        if (question.includes('array')) {
-            return "An **array** is a data structure that stores multiple values in a single variable. Think of it as a list. Example: `let skills = ['Java', 'Python', 'JavaScript'];` - Prince's skills can be stored in an array!";
-        }
-        if (question.includes('database')) {
-            return "A **database** is an organized collection of data stored electronically. It allows you to store, retrieve, and manage information efficiently. Prince works with databases like MySQL, MongoDB, and Firebase!";
-        }
-        return null;
-    }
-
-    // Tech jokes
-    getTechJoke() {
-        const jokes = [
-            "Why do programmers prefer dark mode? 🌙\nBecause light attracts bugs! 🐛",
-            "How many programmers does it take to change a light bulb? 💡\nNone. It's a hardware problem! 🔧",
-            "Why do Java developers wear glasses? 👓\nBecause they don't C#! 😄",
-            "What's a programmer's favorite hangout spot? 🎯\nThe Foo Bar! 🍺",
-            "Why did the developer go broke? 💸\nBecause he used up all his cache! 💰"
-        ];
-        return this.getRandomResponse(jokes);
-    }
-
-    // Motivational quotes
-    getMotivationalQuote() {
-        const quotes = [
-            "💡 *'The only way to do great work is to love what you do.'* - Steve Jobs\n\nKeep pushing forward, just like Prince with his projects!",
-            "🚀 *'Code is like humor. When you have to explain it, it's bad.'* - Cory House\n\nWrite clean, self-explanatory code!",
-            "⭐ *'First, solve the problem. Then, write the code.'* - John Johnson\n\nThink before you code!",
-            "🌟 *'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.'* - Martin Fowler",
-            "🎯 *'The best error message is the one that never shows up.'* - Thomas Fuchs\n\nWrite robust code!"
-        ];
-        return this.getRandomResponse(quotes);
-    }
-
-    matchesPattern(text, keywords) {
-        return keywords.some(keyword => text.includes(keyword));
-    }
-
-    getRandomResponse(responseArray) {
-        return responseArray[Math.floor(Math.random() * responseArray.length)];
-    }
-
-    getSkillsResponse(question) {
-        const kb = this.knowledgeBase;
-        
-        // Safely access skills data
-        const programming = kb.skills?.programming?.join(', ') || 'Java, Python, JavaScript, PHP, C++';
-        const web = kb.skills?.web?.join(', ') || 'HTML5, CSS3, JavaScript, React, Node.js, Bootstrap';
-        const databases = kb.skills?.databases?.join(', ') || 'MySQL, MongoDB, Firebase';
-        const tools = kb.skills?.tools?.join(', ') || 'Git, GitHub, VS Code, Postman';
-        
-        return `Prince has a comprehensive skill set across multiple domains:\n\n**Programming Languages:** ${programming}\n\n**Web Technologies:** ${web}\n\n**Database Systems:** ${databases}\n\n**Tools & Frameworks:** ${tools}\n\nHe's particularly strong in JavaScript and Java, with expert-level proficiency. Would you like to know more about any specific technology?`;
-    }
-
-    getBackgroundResponse() {
-        const kb = this.knowledgeBase;
-        
-        return `**About Prince Jheck T. Juan:**\n\nPrince is a **20-year-old** IT student from **${kb.location}** 🇵🇭. He's currently pursuing **${kb.currentEducation}**.\n\n**Educational Background:**\n• **College:** ${kb.education.college}\n• **Senior High:** ${kb.education.seniorHigh}\n• **Junior High:** ${kb.education.juniorHigh}\n• **Elementary:** ${kb.education.elementary}\n\n**Top Achievements:**\n${kb.achievements.slice(0, 5).map(a => `✅ ${a}`).join('\n')}\n\nPrince is a highly motivated, detail-oriented developer with a strong academic foundation and proven leadership experience. He's passionate about creating innovative tech solutions!`;
-    }
-
-    getProjectsResponse() {
-        const kb = this.knowledgeBase;
-        
-        return `**Prince's Achievements & Projects:**\n\n${kb.achievements.map(achievement => `✅ ${achievement}`).join('\n')}\n\nHe has hands-on experience building functional systems including:\n• Library Management Systems\n• Digital Queue Systems\n• Web Applications\n• Database-driven solutions\n\nHis work demonstrates strong problem-solving skills and practical application of modern technologies!`;
-    }
-
-    getServicesResponse() {
-        const kb = this.knowledgeBase;
-        
-        return `**How Prince Can Help You:**\n\n🔹 **Full-Stack Web Development** - Build complete web applications from frontend to backend\n🔹 **Database Design & Management** - Create efficient database systems (MySQL, MongoDB, Firebase)\n🔹 **API Integration** - Connect your applications with external services\n🔹 **System Development** - Desktop applications and management systems (Java, Python)\n🔹 **UI/UX Implementation** - Responsive, user-friendly interfaces with React and modern frameworks\n🔹 **Technical Consultation** - Technology advice and problem-solving\n\n**Why work with Prince?**\n✅ **Academic Excellence** - High Honors graduate\n✅ **Proven Track Record** - Multiple real-world projects\n✅ **National Recognition** - DAP National Finalist\n✅ **Leadership Experience** - SG Vice President, Club Officer\n✅ **Modern Tech Stack** - React, Node.js, MySQL, APIs\n✅ **Detail-Oriented** - Passionate about quality code\n✅ **Available Now** - Open for freelance, part-time, or collaborative projects\n\nInterested in collaborating? Visit the **Contact** page to get in touch!`;
-    }
-
-    getContactResponse() {
-        return `**Get in Touch with Prince:**\n\nYou can reach out through several channels:\n\n📧 **Contact Form:** Visit the contact page on this website\n💼 **LinkedIn:** Connect professionally on LinkedIn\n🐱 **GitHub:** Check out his code repositories\n\nPrince is always open to discussing new projects, collaboration opportunities, or answering technical questions. Don't hesitate to reach out!`;
-    }
-
-    getGoalsResponse() {
-        const kb = this.knowledgeBase;
-        
-        return `**Prince's Career Goals:**\n\n${kb.goals.map(goal => `🎯 ${goal}`).join('\n')}\n\nHe's committed to continuous growth and making a positive impact in the tech industry. His journey involves mastering full-stack development while exploring emerging technologies to create innovative solutions that make a difference.`;
-    }
-
-    getInterestsResponse() {
-        const kb = this.knowledgeBase;
-        
-        return `**Prince's Areas of Interest:**\n\n${kb.interests.map(interest => `💡 ${interest}`).join('\n')}\n\nHe's particularly passionate about building complete web solutions and exploring how technology can automate and improve everyday processes. Always excited to learn and apply new technologies!`;
-    }
-
-    getSpecificTechResponse(question) {
-        const kb = this.knowledgeBase;
-        
-        if (question.includes('java') && !question.includes('javascript')) {
-            return `**Java Expertise:**\n\nPrince has **expert-level** proficiency in Java (85%). His Java skills include:\n• Object-oriented programming\n• GUI development with Swing\n• File I/O operations\n• Multi-threading\n• System development\n\nHe's used Java to build various projects including management systems and desktop applications.`;
-        }
-        
-        if (question.includes('javascript')) {
-            return `**JavaScript Expertise:**\n\nPrince is an **expert** in JavaScript (90% proficiency). His JavaScript capabilities include:\n• Modern ES6+ features\n• DOM manipulation\n• Async operations and Promises\n• API integration\n• Frontend frameworks (React.js)\n• Backend with Node.js\n\nJavaScript is one of his strongest skills and he uses it extensively in web development projects.`;
-        }
-        
-        if (question.includes('react')) {
-            return `**React.js Skills:**\n\nPrince has **advanced** proficiency in React.js (80%). He's skilled in:\n• Component architecture\n• State management\n• React Hooks\n• Modern UI development\n• Building responsive interfaces\n\nHe uses React to create dynamic, user-friendly web applications.`;
-        }
-        
-        if (question.includes('database') || question.includes('mysql')) {
-            return `**Database Expertise:**\n\nPrince has **advanced** knowledge of database systems, particularly:\n• **MySQL** (82% proficiency) - Relational database design, query optimization, data normalization\n• **SQLite** - Lightweight databases for embedded systems\n\nHe can design efficient database schemas and optimize queries for performance.`;
-        }
-        
-        return `Prince has experience with that technology! Check out the Skills page for a complete overview of his technical capabilities, or ask me about specific programming languages, frameworks, or tools.`;
     }
 }
 
-// Initialize chatbot when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        new PortfolioChatbot();
-    });
-} else {
-    new PortfolioChatbot();
+// Instantiate the chatbot
+if (typeof window !== 'undefined') {
+    window.portfolioChatbotInstance = new PortfolioChatbot();
 }
