@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince Jheck T. Juan - IT Software Developer Portfolio</title>
+    <title>Prince Jheck T. Juan | Full-Stack Developer & APAC Stellar Hackathon International Finalist</title>
+    <meta name="description" content="Portfolio of Prince Jheck T. Juan — Full-Stack & Blockchain Developer, APAC Stellar Hackathon 2026 International Finalist and DAP 2025 National Finalist. Explore projects, skills, and open-source work.">
+    <meta name="theme-color" content="#05060a">
+    <meta property="og:title" content="Prince Jheck T. Juan — Full-Stack & Blockchain Developer">
+    <meta property="og:description" content="International Finalist, APAC Stellar Hackathon 2026. Building world-class digital products.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="github-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="premium.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -39,15 +45,27 @@
         <div class="hero-content">
             <div class="hero-text">
                 <div class="badge">
-                    <i class="fas fa-rocket"></i>
-                    Information Technology Student
+                    <span class="pulse-dot"></span>
+                    Open to internships & collaborations
                 </div>
-                <h1>Building <span class="gradient-text">innovative digital</span> solutions.</h1>
-                <p>I'm Prince Jheck, a passionate IT student specializing in software development and web technologies. Exploring modern frameworks and creating real-world applications that solve problems.</p>
-                <a href="#projects" class="btn btn-primary">
-                    <span>Learn more</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+                <h1>Crafting <span class="gradient-text">world-class</span> digital products.</h1>
+                <div class="hero-role"><span class="typed">Full-Stack Developer</span><span class="caret"></span></div>
+                <p>I'm Prince Jheck T. Juan, a BSIT student and International Finalist at the APAC Stellar Hackathon 2026. I build full-stack, blockchain and AI-driven software that solves real community problems.</p>
+                <div class="hero-actions">
+                    <a href="projects.html" class="btn btn-primary">
+                        <span>View my work</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        <i class="far fa-envelope"></i>
+                        <span>Let's talk</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat"><strong data-count="17" data-plus="true">17+</strong><span>Repositories</span></div>
+                    <div class="hero-stat"><strong data-count="2">2</strong><span>Finalist titles</span></div>
+                    <div class="hero-stat"><strong data-count="122">122</strong><span>Teams outranked</span></div>
+                </div>
             </div>
             <div class="tech-circles">
                 <!-- Professional Profile Box Container -->
@@ -69,9 +87,52 @@
         </div>
     </section>
 
+    <!-- Tech Marquee -->
+    <div class="tech-marquee" aria-label="Technologies I work with">
+        <div class="marquee-track">
+            <span class="marquee-item">Java</span><span class="marquee-item">Kotlin</span><span class="marquee-item">TypeScript</span><span class="marquee-item">JavaScript</span><span class="marquee-item">React</span><span class="marquee-item">Node.js</span><span class="marquee-item">Stellar</span><span class="marquee-item">Soroban</span><span class="marquee-item">Python</span><span class="marquee-item">PHP</span><span class="marquee-item">MySQL</span><span class="marquee-item">Firebase</span><span class="marquee-item">Git &amp; GitHub</span><span class="marquee-item">IoT</span>
+        </div>
+    </div>
+
+    <!-- Recognition Section -->
+    <section id="recognition" class="recognition">
+        <div class="section-container">
+            <span class="section-eyebrow">Recognition</span>
+            <h2 class="section-title">Milestones &amp; Achievements</h2>
+            <div class="recognition-grid">
+                <article class="recog-card big featured">
+                    <div class="recog-icon"><i class="fas fa-globe-asia"></i></div>
+                    <span class="recog-tag">International Finalist · 2026</span>
+                    <h3>APAC Stellar Hackathon Grand Finale</h3>
+                    <p>Lead &amp; Full-Stack Developer of <strong>PUNDAR</strong>, a Stellar/Soroban platform that digitizes community savings (paluwagan). Selected from 122 teams nationwide to represent the Philippines against Vietnam and Indonesia on July 31, 2026.</p>
+                    <div class="recog-meta"><span>Stellar</span><span>Soroban</span><span>Kotlin</span><span>Web3</span></div>
+                </article>
+                <article class="recog-card small">
+                    <div class="recog-icon"><i class="fas fa-trophy"></i></div>
+                    <span class="recog-tag">National Finalist · 2025</span>
+                    <h3>DAP — DementAId</h3>
+                    <p>AI-powered smart anklet and mobile app for safer dementia care.</p>
+                </article>
+                <article class="recog-card mid">
+                    <div class="recog-icon"><i class="fas fa-user-graduate"></i></div>
+                    <span class="recog-tag">Academics</span>
+                    <h3>High Honors · Best in Research &amp; Innovation</h3>
+                    <p>Graduated STEM with High Honors and top research and innovation awards.</p>
+                </article>
+                <article class="recog-card mid">
+                    <div class="recog-icon"><i class="fas fa-users"></i></div>
+                    <span class="recog-tag">Leadership</span>
+                    <h3>SG Vice President, Planning &amp; Development</h3>
+                    <p>Leading student initiatives in CCMS, plus roles in the Math Club, YES-O and Filipino Club.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- GitHub Activity Section (API Integration) -->
     <section id="github" class="github-stats">
         <div class="section-container">
+            <span class="section-eyebrow">Open Source</span>
             <h2 class="section-title">GitHub Activity</h2>
             <div id="githubStats" class="github-grid"></div>
         </div>
@@ -285,5 +346,6 @@
     <script src="chatbot-patterns.js"></script>
     <script src="script.js"></script>
     <script src="chatbot.js"></script>
+    <script src="premium.js"></script>
 </body>
 </html>
